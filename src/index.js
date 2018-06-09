@@ -1,14 +1,14 @@
 const Calls = require('./core/calls');
-const authManager = require('./service/auth');
-const CallsApiAdapter = require('./api/callsApiAdapter');
+const auth = require('./service/auth');
+const EnswitchCallsAdapter = require('./api/EnswitchCallsAdapter');
 
 const nomadoClient = function (username, password) {
-  authManager.setCredentials(username, password);
+  auth.setCredentials(username, password);
 
-  const callsApiAdapter = new CallsApiAdapter();
+  const callsAdapter = new EnswitchCallsAdapter();
 
   return {
-    calls: new Calls(callsApiAdapter),
+    calls: new Calls(callsAdapter),
   };
 };
 

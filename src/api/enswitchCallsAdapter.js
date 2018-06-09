@@ -6,15 +6,15 @@ const httpConfig = {
   TRANSPORT: 'https',
 };
 
-class callsApiAdapter {
+class EnswitchCallsAdapter {
   constructor() {
     this.httpService = new Enswitch({ ...httpConfig, ...authManager.credentials });
   }
 
-  make (data = {}) {
+  async make (data = {}) {
     //TODO check required params
-    return this.httpService._CALL('calls/make', data);
+    return await this.httpService._CALL('calls/make', data);
   }
 };
 
-module.exports = callsApiAdapter;
+module.exports = EnswitchCallsAdapter;
