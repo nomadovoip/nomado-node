@@ -1,15 +1,24 @@
 const Calls = require('./core/calls');
 const auth = require('./service/auth');
-const EnswitchCallsAdapter = require('./api/EnswitchCallsAdapter');
+const CallsAdapter = require('./api/callsAdapter');
 
-const nomadoClient = function (username, password) {
-  auth.setCredentials(username, password);
+/**
+ * The Nomado SDK client which exposes public interfaces
+ */
+class NomadoClient {
+  constructor (username, password) {
+    // Store the credentials
+    auth.setCredentials(username, password);
 
-  const callsAdapter = new EnswitchCallsAdapter();
+    // Initialize the public interface
+    this.buildPublicInterface();
+  }
 
-  return {
-    calls: new Calls(callsAdapter),
-  };
+  buildPublicInterface() {
+    // Initializing the "calls" public interface
+    const callsAdapter = new CallsAdapter();
+    this.calls = new Calls(callsAdapter);
+  }
 };
 
-module.exports = nomadoClient;
+module.exports = NomadoClient;

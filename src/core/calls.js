@@ -1,19 +1,20 @@
-const NomadoResponse = require('../core/response').responseBuilder;
+const NomadoResponse = require('../core/responses').NomadoResponse;
 
 /**
- * Public interface for handling calls
+ * Public interface for calls handling
  */
 class Calls {
-  constructor(apiAdapter) {
-    this.apiAdapter = apiAdapter;
+  constructor(api) {
+    this.api = api;
   }
 
   /**
-   * Initiate a call
-   * @returns {NomadoResponse}
+   * Make a call
+   * @param config
+   * @returns {Promise<NomadoResponse>}
    */
   async make(config) {
-    return NomadoResponse(this.apiAdapter.make(config));
+    return this.api.make(config);
   }
 }
 
