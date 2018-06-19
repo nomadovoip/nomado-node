@@ -13,7 +13,7 @@ Not yet published
 
 Below is an example of making a call with the Nomado API.
 
-```js
+```javascript
 
 const MY_USERNAME = 'username';
 const MY_PASSWORD = 'password';
@@ -27,13 +27,13 @@ const callConfig = {
 };
 
 calls.make(callConfig)
-    .then(function (nomadoResponse) {
-      console.log(nomadoResponse.code);
-      console.log(nomadoResponse.data);
+    .then((response) => {
+      console.log(response.code);
+      console.log(response.data);
     })
-    .catch(function (nomadoResponse) {
-      console.log(nomadoResponse.code);
-      console.log(nomadoResponse.reason);
+    .catch((error) => {
+      console.log(error.code);
+      console.log(error.reason);
     });
 
 ```

@@ -12,7 +12,7 @@ class Validator {
    * @param call
    */
   static validateRequiredParams(requiredParams, options, call) {
-    var missingParams = requiredParams.filter(function (optionName) {
+    var missingParams = requiredParams.filter((optionName) => {
       return !_.has(options, optionName);
     });
 

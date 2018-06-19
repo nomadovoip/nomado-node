@@ -4,8 +4,8 @@ const CallsAdapter = require('../src/api/callsAdapter');
 const enswitchCallSuccessData = require('./data/enswitchCallSuccess.json');
 const NomadoResponse = require('../src/core/responses').NomadoResponse;
 
-describe('CallsAdapter', function () {
-  it('should return a successful NomadoResponse with code 200', function (done) {
+describe('CallsAdapter', () => {
+  it('should return a successful NomadoResponse with code 200', (done) => {
     const apiAdapter = new CallsAdapter();
     spyOn(apiAdapter.httpService, '_CALL').andReturn(enswitchCallSuccessData);
     const callData = {
@@ -21,7 +21,7 @@ describe('CallsAdapter', function () {
       });
   });
 
-  it('should throw a NomadoResponse with code 400 when parameters are missing', function (done) {
+  it('should throw a NomadoResponse with code 400 when parameters are missing', (done) => {
     const apiAdapter = new CallsAdapter();
     spyOn(apiAdapter.httpService, '_CALL').andReturn(enswitchCallSuccessData);
 
