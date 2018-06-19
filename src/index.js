@@ -1,4 +1,5 @@
 const Calls = require('./core/calls');
+const Account = require('./core/account');
 const auth = require('./service/auth');
 const CallsAdapter = require('./api/callsAdapter');
 
@@ -10,14 +11,24 @@ class NomadoClient {
     // Store the credentials
     auth.setCredentials(username, password);
 
-    // Initialize the public interface
-    this.buildPublicInterface();
+    // Initialize the public interfaces
+    this.buildCallsInterface();
+    this.buildAccountInterface();
   }
 
-  buildPublicInterface() {
-    // Initializing the "calls" public interface
+  /**
+   * Initialize the Calls public interface
+   */
+  buildCallsInterface() {
     const callsAdapter = new CallsAdapter();
     this.calls = new Calls(callsAdapter);
+  }
+
+  /**
+   * Initialize the Account public interface
+   */
+  buildAccountInterface() {
+    this.account = new Account();
   }
 };
 
