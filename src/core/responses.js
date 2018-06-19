@@ -32,14 +32,14 @@ class HttpError {
  */
 class EnswitchResponse {
   // Parse the response coming from the Enswitch API and return a formatted NomadoResponse
-  static buildResponse (responses) {
+  static buildResponse (responses, responseData) {
     // Take the first object from responses array
     const firstResponse = responses[0] || {};
 
     const formattedResponse = {
       code: firstResponse.code,
       reason: firstResponse.message,
-      data: responses.data || {},
+      data: responseData || {},
     };
 
     return new NomadoResponse(formattedResponse);

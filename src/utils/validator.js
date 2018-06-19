@@ -12,9 +12,7 @@ class Validator {
    * @param call
    */
   static validateRequiredParams(requiredParams, options, call) {
-    var missingParams = requiredParams.filter((optionName) => {
-      return !_.has(options, optionName);
-    });
+    var missingParams = requiredParams.filter((optionName) => !_.has(options, optionName));
 
     if (missingParams.length > 0) {
       const message = `Some required options are missing in ${call} : ${missingParams.join(', ')}.`;
@@ -22,6 +20,12 @@ class Validator {
     }
 
     return true;
+  }
+
+  static throwInvalidAPIResponse(requiredItems, call) {
+    const message = `Some required data is missing in the response from 
+    ${call} : ${requiredItems.join(', ')}.`;
+    throw new NomadoResponse({ code: 400, reason: message });
   }
 };
 
