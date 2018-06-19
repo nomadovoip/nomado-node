@@ -1,6 +1,6 @@
-## Nomado NodeJS SDK
-###TODO LIST
+##  Todo list
 
-- [x] Create a TODO list
-- [] Make the "Calls" public interface
-- [] Define a standard NomadoResponse wrapper to handle API errors and responses
+-   [x] Create a Todo list  
+-   [x] "Calls" public interface ( calls.make )
+-   [ ] "Account" public interface  
+-   [ ] Add more information in the Readme (Nomado description, links to Nomado website, examples and contribution guidelines)
