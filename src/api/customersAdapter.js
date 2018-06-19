@@ -9,17 +9,18 @@ const httpConfig = {
 /**
  * An adapter for the Enswitch Calls API
  */
-class CallsAdapter extends EnswitchAdapter{
+class CustomersAdapter extends EnswitchAdapter{
+
   /**
    * Make a call
    * Required params : cnumber, snumber
    * @param data
    * @returns {Promise<NomadoResponse>}
    */
-  async make (data = {}) {
-    const endpoint = 'calls/make';
+  async get (data = {}) {
+    const endpoint = 'customers/get';
     const requiredParams = [
-      'snumber', 'cnumber',
+      'id',
     ];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
     return this._call(endpoint, data);
