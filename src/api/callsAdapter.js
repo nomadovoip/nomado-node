@@ -1,15 +1,10 @@
 const EnswitchAdapter = require('./enswitchAdapter');
 const Validator = require('../utils/validator');
 
-const httpConfig = {
-  SERVER: 'npbx.nomado.eu',
-  TRANSPORT: 'https',
-};
-
 /**
  * An adapter for the Enswitch Calls API
  */
-class CallsAdapter extends EnswitchAdapter{
+class CallsAdapter extends EnswitchAdapter {
   /**
    * Make a call
    * Required params : cnumber, snumber

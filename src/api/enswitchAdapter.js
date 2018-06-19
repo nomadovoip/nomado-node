@@ -1,4 +1,4 @@
-const authManager = require('../service/auth');
+const auth = require('../service/auth');
 const Enswitch = require('../http/enswitch');
 const { EnswitchResponse, HttpError } = require('../core/responses');
 const Validator = require('../utils/validator');
@@ -13,7 +13,7 @@ const httpConfig = {
  */
 class EnswitchAdapter {
   constructor() {
-    this.httpService = new Enswitch({ ...httpConfig, ...authManager.credentials });
+    this.httpService = new Enswitch({ ...httpConfig, ...auth.credentials });
   }
 
   /**
@@ -34,24 +34,26 @@ class EnswitchAdapter {
    * @returns {Promise<NomadoResponse>}
    * @private
    */
-  async _call(endpoint, data) {
+  async _call(endpoint, data = {}) {
+    let responses;
     let responseData;
     try {
       // Wait for http response
       const httpResponse = await this.httpService._CALL(endpoint, data);
-      responseData = httpResponse.responses || null;
+      responseData = httpResponse.data || null;
+      responses = httpResponse.responses || null;
     }
     catch (e) {
       // Throw exception if the http request failed
       throw HttpError.buildResponse(e);
     }
 
-    if (!responseData || this._hasError(responseData)) {
-      throw EnswitchResponse.buildResponse(responseData);
+    if (!responseData || this._hasError(responses)) {
+      throw EnswitchResponse.buildResponse(responses, responseData);
     }
 
     // Return a NomadoResponse
-    return EnswitchResponse.buildResponse(responseData);
+    return EnswitchResponse.buildResponse(responses, responseData);
   }
 };
 

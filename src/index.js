@@ -2,6 +2,7 @@ const Calls = require('./core/calls');
 const Account = require('./core/account');
 const auth = require('./service/auth');
 const CallsAdapter = require('./api/callsAdapter');
+const CustomersAdapter = require('./api/customersAdapter');
 
 /**
  * The Nomado SDK client which exposes public interfaces
@@ -28,7 +29,8 @@ class NomadoClient {
    * Initialize the Account public interface
    */
   buildAccountInterface() {
-    this.account = new Account();
+    const customersAdapter = new CustomersAdapter();
+    this.account = new Account(customersAdapter);
   }
 };
 
