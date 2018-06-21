@@ -2,8 +2,14 @@
 
 const auth = require('../src/service/auth');
 const UserAdapter = require('../src/api/userAdapter');
+const userResponse = require('./data/userSuccess.json');
 
 describe('AuthManager', () => {
+  beforeEach(() => {
+    //Reset auth stored user data if any
+    auth._user = null;
+  });
+
   it('should store the credentials', () => {
     const myCredentials = { username: 'user', password: 'pass' };
     auth.setCredentials(myCredentials.username, myCredentials.password);
@@ -11,20 +17,20 @@ describe('AuthManager', () => {
     expect(auth.credentials.PASSWORD).toBe(myCredentials.password);
   });
 
-  it('should throw an authentication error when login with invalid credentials', (done) => {
-    const myCredentials = { username: 'user', password: 'pass' };
-    auth.setCredentials(myCredentials.username, myCredentials.password);
-    const userApi = new UserAdapter();
-    const user = auth.login(userApi)
-      .catch((r) => {
-        expect(r.code).toBe(401);
-        done();
-      });
-  });
-
-  it('should return user data with customer id', (done) => {
+  it('should return user data with customer id', async () => {
+    const userAdapter = new UserAdapter();
+    spyOn(userAdapter.httpService, '_CALL').and.returnValue(userResponse);
+    const user = await auth.login(userAdapter);
+    expect(user.customer).toEqual(jasmine.any(String));
   });
 
   it('should throw an error if customer id is missing', (done) => {
+    const userAdapter = new UserAdapter();
+    spyOn(userAdapter.httpService, '_CALL').and.returnValue({});
+
+    auth.login(userAdapter)
+      .catch((error) => {
+        done();
+      });
   });
 });

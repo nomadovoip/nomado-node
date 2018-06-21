@@ -1,0 +1,12 @@
+{
+  "responses" : [
+    {
+      "code" : "200",
+      "message" : "OK",
+      "key" : ""
+    }
+  ],
+  "data" : {
+    "balance" : "1.779418"
+  }
+}

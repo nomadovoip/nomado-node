@@ -1,0 +1,14 @@
+{
+  "data" : {
+    "country" : "BE",
+    "language" : "en",
+    "customer" : "1"
+  },
+  "responses" : [
+    {
+      "code" : "200",
+      "key" : "",
+      "message" : "OK"
+    }
+  ]
+}
