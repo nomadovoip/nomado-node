@@ -8,9 +8,10 @@ const CustomersAdapter = require('./api/customersAdapter');
  * The Nomado SDK client which exposes public interfaces
  */
 class NomadoClient {
-  constructor (username, password) {
+  constructor (authConfig = {}) {
+
     // Store the credentials
-    auth.setCredentials(username, password);
+    auth.setCredentials(authConfig);
 
     // Initialize the public interfaces
     this.buildCallsInterface();

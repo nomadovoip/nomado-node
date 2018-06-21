@@ -15,10 +15,10 @@ Below is an example of making a call with the Nomado API.
 
 ```javascript
 
-const MY_USERNAME = 'username';
-const MY_PASSWORD = 'password';
+const USERNAME = 'username';
+const PASSWORD = 'password';
 
-const nomado = new NomadoClient(MY_USERNAME, MY_PASSWORD);
+const nomado = new NomadoClient({USERNAME, PASSWORD});
 const calls = nomado.calls;
 
 const callConfig = {

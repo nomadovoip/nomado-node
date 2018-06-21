@@ -12,7 +12,7 @@ describe('AuthManager', () => {
 
   it('should store the credentials', () => {
     const myCredentials = { username: 'user', password: 'pass' };
-    auth.setCredentials(myCredentials.username, myCredentials.password);
+    auth.setCredentials(myCredentials);
     expect(auth.credentials.USERNAME).toBe(myCredentials.username);
     expect(auth.credentials.PASSWORD).toBe(myCredentials.password);
   });
@@ -32,5 +32,12 @@ describe('AuthManager', () => {
       .catch((error) => {
         done();
       });
+  });
+
+  it('should throw an error if using an unknown authentication method', () => {
+    expect(() => {
+      const myCredentials = { username: 'user', password: 'pass', authType: 'UNKNOWN' };
+      auth.setCredentials(myCredentials);
+    }).toThrow();
   });
 });
