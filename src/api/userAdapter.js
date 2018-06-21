@@ -12,8 +12,7 @@ class UserAdapter extends EnswitchAdapter {
 
   /**
    * Fetch user data
-   * @param data
-   * @returns {}
+   * @returns {Promise<NomadoResponse>}
    */
   async login () {
     const endpoint = 'user/login';

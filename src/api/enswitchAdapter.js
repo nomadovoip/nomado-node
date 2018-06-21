@@ -18,7 +18,7 @@ class EnswitchAdapter {
 
   /**
    * Check if any response has status code >= 300
-   * @param response
+   * @param responseData
    * @returns {boolean}
    */
   _hasError(responseData) {

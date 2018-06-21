@@ -3,7 +3,7 @@
 const NomadoClient = require('../');
 const Calls = require('../src/core/calls');
 const NomadoResponse = require('../src/core/responses').NomadoResponse;
-const enswitchCallSuccessData = require('./data/enswitchCallSuccess.json');
+const callResponse = require('./data/callSuccess.json');
 
 describe('Calls Interface', () => {
   it('should create an instance of Calls', () => {
@@ -11,18 +11,15 @@ describe('Calls Interface', () => {
     expect(nomado.calls instanceof Calls).toBe(true);
   });
 
-  it('should return a NomadoResponse', (done) => {
+  it('should return a NomadoResponse', async () => {
     const nomado = new NomadoClient();
     const calls = nomado.calls;
-    spyOn(calls.api.httpService, '_CALL').andReturn(enswitchCallSuccessData);
+    spyOn(calls.api.httpService, '_CALL').and.returnValue(callResponse);
     const callData = {
       snumber: '1234',
       cnumber: '12345',
     };
-    calls.make(callData)
-      .then((result) => {
-        expect(result instanceof NomadoResponse).toBe(true);
-        done();
-      });
+    let response = await calls.make(callData);
+    expect(response instanceof NomadoResponse).toBe(true);
   });
 });

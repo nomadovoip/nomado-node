@@ -21,4 +21,12 @@ describe('Validator', () => {
       Validator.validateRequiredParams(requiredParams, options);
     }).not.toThrow();
   });
+
+  it('should throw an exception if missing params in response', () => {
+    const requiredItems = ['param1', 'param2'];
+
+    expect(() => {
+      Validator.throwInvalidAPIResponse(requiredItems);
+    }).toThrow();
+  });
 });

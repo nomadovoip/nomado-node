@@ -4,23 +4,53 @@
 const NomadoClient = require('../');
 const Account = require('../src/core/account');
 const CustomersAdapter = require('../src/api/customersAdapter');
-const NomadoResponse = require('../src/core/responses').NomadoResponse;
+const callResponse = require('./data/callSuccess.json');
+const customerResponse = require('./data/customerSuccess.json');
+const userResponse = require('./data/userSuccess.json');
+const auth = require('../src/service/auth');
 
 describe('Account Interface', () => {
+  beforeAll(() => {
+    this.nomado = new NomadoClient();
+    spyOn(this.nomado.account.api.userAdapter.httpService, '_CALL').and.returnValue(userResponse);
+    spyOn(this.nomado.account.api.httpService, '_CALL').and.returnValue(customerResponse);
+  });
+
+  beforeEach(() => {
+    spyOn(this.nomado.account.api.userAdapter, 'login').and.returnValue(userResponse);
+
+    //Reset auth stored user data if any
+    auth._user = null;
+  });
+
   it('should create an instance of Account', () => {
-    const nomado = new NomadoClient();
-    expect(nomado.account instanceof Account).toBe(true);
+    expect(this.nomado.account instanceof Account).toBe(true);
   });
 
   it('should create an instance of customersAdapter', () => {
-    const nomado = new NomadoClient();
-    const account = nomado.account;
-    expect(account.api instanceof CustomersAdapter).toBe(true);
+    expect(this.nomado.account.api instanceof CustomersAdapter).toBe(true);
   });
 
-  it('should call the login API when first time fetching customer data', (done) => {
+  it('should call the login API on first time fetching customer data', async () => {
+    await this.nomado.account.getBalance();
+    expect(this.nomado.account.api.userAdapter.login).toHaveBeenCalled();
   });
 
-  it('should return the customer balance', (done) => {
+  it('should have stored user data without calling the login API twice', async () => {
+    await this.nomado.account.getBalance();
+    await this.nomado.account.getBalance();
+    expect(this.nomado.account.api.userAdapter.login).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call the login API again after user reset', async () => {
+    await this.nomado.account.getBalance();
+    auth.setCredentials('user', 'pass');
+    await this.nomado.account.getBalance();
+    expect(this.nomado.account.api.userAdapter.login).toHaveBeenCalledTimes(2);
+  });
+
+  it('should return the customer balance', async () => {
+    let response =  await this.nomado.account.getBalance();
+    expect(response.data.balance).toEqual(jasmine.any(String));
   });
 });

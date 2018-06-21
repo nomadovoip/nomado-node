@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 /**
  * Default formatted response
  */
@@ -34,7 +36,7 @@ class EnswitchResponse {
   // Parse the response coming from the Enswitch API and return a formatted NomadoResponse
   static buildResponse (responses, responseData) {
     // Take the first object from responses array
-    const firstResponse = responses[0] || {};
+    const firstResponse = _.isArray(responses) ? responses[0] || {} : {};
 
     const formattedResponse = {
       code: firstResponse.code,
