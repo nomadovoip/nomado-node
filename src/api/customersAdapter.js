@@ -2,6 +2,7 @@ const EnswitchAdapter = require('./enswitchAdapter');
 const Validator = require('../utils/validator');
 const auth = require('../service/auth');
 const UserAdapter = require('./userAdapter');
+const _ = require('lodash');
 /**
  * An adapter for the Enswitch Customers API
  */
@@ -18,7 +19,11 @@ class CustomersAdapter extends EnswitchAdapter {
    */
   async getBalance (data = {}) {
     const endpoint = 'customers/get';
-    return await this._call(endpoint, data);
+    let response = await this._call(endpoint, data);
+
+    //Only return balance related data
+    response.data = _.pick(response.data, ['balance']);
+    return response;
   }
 
   async _call(endpoint, data) {
