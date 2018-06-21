@@ -18,14 +18,15 @@ class CustomersAdapter extends EnswitchAdapter {
    */
   async getBalance (data = {}) {
     const endpoint = 'customers/get';
-    let nomadoResponse = await this._call(endpoint, data);
-    return nomadoResponse.data.balance;
+    return await this._call(endpoint, data);
   }
 
   async _call(endpoint, data) {
     if (!data.id) {
+      //If the user id is not supplied, we ask the auth manager to fetch it for us
       let user = await auth.login(this.userAdapter);
       if (!user.customer) {
+        //Throw an error if the response does not contain the user id
         Validator.throwInvalidAPIResponse(['customer'], endpoint);
       }
 
