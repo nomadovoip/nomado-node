@@ -10,6 +10,10 @@ class AuthManager  {
    */
   static setCredentials(USERNAME, PASSWORD) {
     AuthManager._credentials = { USERNAME, PASSWORD };
+
+    //Reset the stored user data if any
+    AuthManager._user = null;
+
     return AuthManager;
   }
 
@@ -27,7 +31,7 @@ class AuthManager  {
   }
 
   /**
-   * Fetch user info
+   * Fetch and store user info
    */
   static async login(userApi) {
     if (!AuthManager._user) {
@@ -38,5 +42,9 @@ class AuthManager  {
     return AuthManager._user;
   }
 };
+
+//Static store
+AuthManager._user = null;
+AuthManager._credentials = {};
 
 module.exports = AuthManager;
