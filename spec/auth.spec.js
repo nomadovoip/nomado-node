@@ -11,10 +11,10 @@ describe('AuthManager', () => {
   });
 
   it('should store the credentials', () => {
-    const myCredentials = { username: 'user', password: 'pass' };
+    const myCredentials = { USERNAME: 'user', PASSWORD: 'pass' };
     auth.setCredentials(myCredentials);
-    expect(auth.credentials.USERNAME).toBe(myCredentials.username);
-    expect(auth.credentials.PASSWORD).toBe(myCredentials.password);
+    expect(auth.credentials.USERNAME).toBe(myCredentials.USERNAME);
+    expect(auth.credentials.PASSWORD).toBe(myCredentials.PASSWORD);
   });
 
   it('should return user data with customer id', async () => {
@@ -36,7 +36,7 @@ describe('AuthManager', () => {
 
   it('should throw an error if using an unknown authentication method', () => {
     expect(() => {
-      const myCredentials = { username: 'user', password: 'pass', authType: 'UNKNOWN' };
+      const myCredentials = { USERNMAE: 'user', PASSWORD: 'pass', AUTH_TYPE: 'UNKNOWN' };
       auth.setCredentials(myCredentials);
     }).toThrow();
   });
