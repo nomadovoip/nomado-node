@@ -1,6 +1,6 @@
 ![Nomado Logo](./assets/nomado-logo.png)
 # NodeJS SDK for the Nomado API
-<div align="center">
+<div>
   <h3>
     <a href="https://www.nomado.eu">
       Website
