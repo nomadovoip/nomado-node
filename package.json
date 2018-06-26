@@ -2,11 +2,17 @@
   "name": "nomado-client",
   "version": "1.0.0",
   "description": "Nomado Client SDK",
+  "keywords": [
+    "voip",
+    "nomado",
+    "call",
+    "sms"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jasmine"
   },
-  "author": "Flavien <fbarse@gmail.com>",
+  "author": "Nomado Telecom SPRL <developer@nomado.eu>",
   "license": "MIT",
   "dependencies": {
     "axios": "0.18.0",
