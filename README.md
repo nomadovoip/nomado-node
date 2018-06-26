@@ -39,7 +39,7 @@ This package provides a module to access the Nomado API.
 ## Installation
 
 ```
-npm install nomado-client
+npm install nomado
 ```
 
 ## Quickstart
@@ -47,7 +47,7 @@ npm install nomado-client
 Below is an example of **making a call** with the Nomado API.
 
 ```javascript
-const NomadoClient = require('nomado-client');
+const NomadoClient = require('nomado');
 
 const USERNAME = 'username';
 const PASSWORD = 'password';
