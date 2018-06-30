@@ -82,7 +82,7 @@ Pass in your Nomado credentials to the `NomadoClient` class.
 const nomado = new NomadoClient({USERNAME, PASSWORD});
 ````
 
-###Responses
+### Responses
 The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.  
 
 **Properties:**
