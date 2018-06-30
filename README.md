@@ -31,8 +31,8 @@ This package provides a module to access the Nomado API.
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Quickstart](#quickstart)
-- [Documentation](#Documentation)
-- [TODO](#TODO)
+- [Documentation](#documentation)
+- [TODO](#todo)
 - [Contributing](#contributing)
 - [Support](#support)
 
@@ -72,13 +72,41 @@ calls.make(callConfig)
 ```
 
 ## Documentation
-work in progress
+The `NomadoClient` class provides the public interfaces to the Nomado API 
+* `Calls`
+* `Account`
+
+#### Authentication
+Pass in your Nomado credentials to the `NomadoClient` class.
+````javascript
+const nomado = new NomadoClient({USERNAME, PASSWORD});
+````
+
+#### Responses
+The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.
+#####Properties
+* ``code`` {integer}
+* ``reason`` {string}
+* ``data``:  {object}
+
+
+### Class: `NomadoClient.calls`
+#####Methods
+* ``make({cnumber, snumber})`` make a call
+  
+### Class: `NomadoClient.account`
+
+#####Methods
+* ``getBalance()`` get the customer current balance
+
+
 
 ## TODO
 work in progress
 
 ## Contributing
-work in progress
+You are welcome to contribute in several ways like creating new features, fixing bugs, improving documentation etc...  
+[More information in CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Support
 We are a small team dedicated to offer you the best support because we want to satisfy you.  
@@ -86,3 +114,4 @@ For any problem or question, feel free to [contact us](https://www.nomado.eu/pag
 
 ## Contributors
 - [Flavien Barsé](https://github.com/flavienb)
+- [Aley Rizvi](https://github.com/aleyrizvi)
