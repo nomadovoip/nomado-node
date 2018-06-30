@@ -83,20 +83,21 @@ const nomado = new NomadoClient({USERNAME, PASSWORD});
 ````
 
 #### Responses
-The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.
-#####Properties
+The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.  
+
+**Properties:**
 * ``code`` {integer}
 * ``reason`` {string}
 * ``data``:  {object}
 
 
 ### Class: `NomadoClient.calls`
-#####Methods
+**Methods**
 * ``make({cnumber, snumber})`` make a call
   
 ### Class: `NomadoClient.account`
 
-#####Methods
+**Methods**
 * ``getBalance()`` get the customer current balance
 
 
