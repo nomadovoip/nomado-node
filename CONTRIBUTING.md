@@ -45,7 +45,7 @@ Please submit yout Pull Requests to the ``develop`` branch.
 All new features and bug fixes will be added to ``develop``, until a stable release is ready. ``develop`` will then be
 merged to master with a new release tag.
 
-#####Set up the project on your machine:
+**Set up the project on your machine:**
 
 ```bash
 git clone https://github.com/nomadovoip/nomado-node/
@@ -53,13 +53,13 @@ cd nomado-node
 npm install
 ```
 
-#####Verify the tests are passing:
+**Verify the tests are passing:**
 
 ```
 npm test
 ```
 
-#####Make it globally available so you can run it on your test project:
+**Make it globally available so you can run it on your test project:**
 
 ```
 npm link
