@@ -76,13 +76,13 @@ The `NomadoClient` class provides the public interfaces to the Nomado API
 * `Calls`
 * `Account`
 
-#### Authentication
+### Authentication
 Pass in your Nomado credentials to the `NomadoClient` class.
 ````javascript
 const nomado = new NomadoClient({USERNAME, PASSWORD});
 ````
 
-#### Responses
+###Responses
 The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.  
 
 **Properties:**
