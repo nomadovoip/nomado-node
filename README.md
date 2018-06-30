@@ -31,8 +31,8 @@ This package provides a module to access the Nomado API.
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Quickstart](#quickstart)
-- [Documentation](#Documentation)
-- [TODO](#TODO)
+- [Documentation](#documentation)
+- [TODO](#todo)
 - [Contributing](#contributing)
 - [Support](#support)
 
@@ -72,7 +72,36 @@ calls.make(callConfig)
 ```
 
 ## Documentation
-work in progress
+The `NomadoClient` class provides the main public interfaces to the Nomado API 
+* `Calls`
+* `Account`
+
+##### Authentication
+Pass in your Nomado credentials to the `NomadoClient` class.
+````javascript
+const nomado = new NomadoClient({USERNAME, PASSWORD});
+````
+
+##### Responses
+The public interface methods should always return a `NomadoResponse` object wrapping the API response code and the data.
+````
+{
+  code: <integer>,
+  reason: <string>,
+  data:  <object>,
+};
+````
+
+### Class: `NomadoClient.calls`
+#####Methods
+* ``make({cnumber, snumber})`` make a call
+  
+### Class: `NomadoClient.account`
+
+#####Methods
+* ``getBalance()`` get the customer current balance
+
+
 
 ## TODO
 work in progress
