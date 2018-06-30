@@ -72,25 +72,23 @@ calls.make(callConfig)
 ```
 
 ## Documentation
-The `NomadoClient` class provides the main public interfaces to the Nomado API 
+The `NomadoClient` class provides the public interfaces to the Nomado API 
 * `Calls`
 * `Account`
 
-##### Authentication
+#### Authentication
 Pass in your Nomado credentials to the `NomadoClient` class.
 ````javascript
 const nomado = new NomadoClient({USERNAME, PASSWORD});
 ````
 
-##### Responses
-The public interface methods should always return a `NomadoResponse` object wrapping the API response code and the data.
-````
-{
-  code: <integer>,
-  reason: <string>,
-  data:  <object>,
-}
-````
+#### Responses
+The public interface methods always return a promise that will be resolved (or rejected) with a `NomadoResponse` object wrapping the API response code and the data.
+#####Properties
+* ``code`` {integer}
+* ``reason`` {string}
+* ``data``:  {object}
+
 
 ### Class: `NomadoClient.calls`
 #####Methods
@@ -116,3 +114,4 @@ For any problem or question, feel free to [contact us](https://www.nomado.eu/pag
 
 ## Contributors
 - [Flavien Barsé](https://github.com/flavienb)
+- [Aley Rizvi](https://github.com/aleyrizvi)
