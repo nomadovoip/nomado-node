@@ -89,7 +89,7 @@ The public interface methods should always return a `NomadoResponse` object wrap
   code: <integer>,
   reason: <string>,
   data:  <object>,
-};
+}
 ````
 
 ### Class: `NomadoClient.calls`
@@ -107,7 +107,8 @@ The public interface methods should always return a `NomadoResponse` object wrap
 work in progress
 
 ## Contributing
-work in progress
+You are welcome to contribute in several ways like creating new features, fixing bugs, improving documentation etc...  
+[More information in CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Support
 We are a small team dedicated to offer you the best support because we want to satisfy you.  
