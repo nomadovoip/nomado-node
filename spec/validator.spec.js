@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const { NomadoResponse } = require('../src/core/responses');
+const { NomadoResponse } = require('../src/utils/responses');
 const Validator = require('../src/utils/validator');
 
 describe('Validator', () => {

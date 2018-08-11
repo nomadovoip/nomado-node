@@ -1,12 +1,9 @@
 const _ = require('lodash');
-const axiosInstance = require('axios');
+const HttpClient = require('./httpClient');
 
-class Enswitch {
+class Enswitch extends HttpClient{
   constructor(config = {}) {
-    this.SERVER_URL = this.prepareServerURL(config);
-    this.axios = axiosInstance.create({
-      baseURL: this.SERVER_URL,
-    });
+    super(config);
     this.API_USER = config.USERNAME;
     this.API_PASS = config.PASSWORD;
   }
@@ -34,16 +31,7 @@ class Enswitch {
   */
   async _CALL(endpoint = '', data = {}) {
     data = await this.AddSUDOCredentials(data);
-    try {
-      let result = await this.axios.get(endpoint, {
-        params: data,
-      });
-
-      return result.data;
-    } catch (e) {
-      throw e;
-    }
-
+    super._CALL(endpoint, data);
   }
 }
 

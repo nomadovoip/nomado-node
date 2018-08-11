@@ -2,7 +2,7 @@
 
 const NomadoClient = require('../');
 const Calls = require('../src/core/calls');
-const NomadoResponse = require('../src/core/responses').NomadoResponse;
+const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const callResponse = require('./data/callSuccess.json');
 
 describe('Calls Interface', () => {
@@ -14,7 +14,7 @@ describe('Calls Interface', () => {
   it('should return a NomadoResponse', async () => {
     const nomado = new NomadoClient();
     const calls = nomado.calls;
-    spyOn(calls.api.httpService, '_CALL').and.returnValue(callResponse);
+    spyOn(calls.api.httpClient, '_CALL').and.returnValue(callResponse);
     const callData = {
       snumber: '1234',
       cnumber: '12345',

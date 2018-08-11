@@ -1,4 +1,4 @@
-const EnswitchAdapter = require('./enswitchAdapter');
+const ApiAdapter = require('./apiAdapter');
 const Validator = require('../utils/validator');
 const auth = require('../service/auth');
 const UserAdapter = require('./userAdapter');
@@ -6,10 +6,10 @@ const _ = require('lodash');
 /**
  * An adapter for the Enswitch Customers API
  */
-class CustomersAdapter extends EnswitchAdapter {
-  constructor() {
-    super();
-    this.userAdapter = new UserAdapter();
+class CustomersAdapter extends ApiAdapter {
+  constructor(httpClient) {
+    super(httpClient);
+    this.userAdapter = new UserAdapter(this.httpClient);
   }
   /**
    * Fetch account current balance
@@ -23,6 +23,7 @@ class CustomersAdapter extends EnswitchAdapter {
 
     //Only return balance related data
     response.data = _.pick(response.data, ['balance']);
+
     return response;
   }
 

@@ -1,14 +1,9 @@
-const EnswitchAdapter = require('./enswitchAdapter');
-
-const httpConfig = {
-  SERVER: 'npbx.nomado.eu',
-  TRANSPORT: 'https',
-};
+const ApiAdapter = require('./apiAdapter');
 
 /**
  * An adapter for the Enswitch User API
  */
-class UserAdapter extends EnswitchAdapter {
+class UserAdapter extends ApiAdapter {
 
   /**
    * Fetch user data

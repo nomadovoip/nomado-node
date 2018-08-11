@@ -3,6 +3,7 @@
 const auth = require('../src/service/auth');
 const UserAdapter = require('../src/api/userAdapter');
 const userResponse = require('./data/userSuccess.json');
+const HttpClientBuilder = require('../src/http/httpClientBuilder');
 
 describe('AuthManager', () => {
   beforeEach(() => {
@@ -18,15 +19,15 @@ describe('AuthManager', () => {
   });
 
   it('should return user data with customer id', async () => {
-    const userAdapter = new UserAdapter();
-    spyOn(userAdapter.httpService, '_CALL').and.returnValue(userResponse);
+    const userAdapter = new UserAdapter(HttpClientBuilder.enswitch);
+    spyOn(userAdapter.httpClient, '_CALL').and.returnValue(userResponse);
     const user = await auth.login(userAdapter);
     expect(user.customer).toEqual(jasmine.any(String));
   });
 
   it('should throw an error if customer id is missing', (done) => {
-    const userAdapter = new UserAdapter();
-    spyOn(userAdapter.httpService, '_CALL').and.returnValue({});
+    const userAdapter = new UserAdapter(HttpClientBuilder.enswitch);
+    spyOn(userAdapter.httpClient, '_CALL').and.returnValue({});
 
     auth.login(userAdapter)
       .catch((error) => {

@@ -4,16 +4,13 @@
 const NomadoClient = require('../');
 const Account = require('../src/core/account');
 const CustomersAdapter = require('../src/api/customersAdapter');
-const callResponse = require('./data/callSuccess.json');
-const customerResponse = require('./data/customerSuccess.json');
 const userResponse = require('./data/userSuccess.json');
 const auth = require('../src/service/auth');
 
 describe('Account Interface', () => {
   beforeAll(() => {
-    this.nomado = new NomadoClient();
-    spyOn(this.nomado.account.api.userAdapter.httpService, '_CALL').and.returnValue(userResponse);
-    spyOn(this.nomado.account.api.httpService, '_CALL').and.returnValue(customerResponse);
+    this.nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+    spyOn(this.nomado.account.api.userAdapter.httpClient, '_CALL').and.returnValue(userResponse);
   });
 
   beforeEach(() => {
@@ -44,7 +41,7 @@ describe('Account Interface', () => {
 
   it('should call the login API again after user reset', async () => {
     await this.nomado.account.getBalance();
-    auth.setCredentials('user', 'pass');
+    auth.setCredentials({ USERNAME: 'user', PASSWORD: 'pass' });
     await this.nomado.account.getBalance();
     expect(this.nomado.account.api.userAdapter.login).toHaveBeenCalledTimes(2);
   });

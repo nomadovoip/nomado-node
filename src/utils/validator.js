@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { NomadoResponse } = require('../core/responses');
+const { NomadoResponse } = require('./responses');
 
 /**
  * A utility class which performs objects validation

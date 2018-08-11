@@ -3,6 +3,7 @@ const Account = require('./core/account');
 const auth = require('./service/auth');
 const CallsAdapter = require('./api/callsAdapter');
 const CustomersAdapter = require('./api/customersAdapter');
+const HttpClientBuilder = require('./http/httpClientBuilder');
 
 /**
  * The Nomado SDK client which exposes public interfaces
@@ -22,7 +23,7 @@ class NomadoClient {
    * Initialize the Calls public interface
    */
   buildCallsInterface() {
-    const callsAdapter = new CallsAdapter();
+    const callsAdapter = new CallsAdapter(HttpClientBuilder.enswitch);
     this.calls = new Calls(callsAdapter);
   }
 
@@ -30,7 +31,7 @@ class NomadoClient {
    * Initialize the Account public interface
    */
   buildAccountInterface() {
-    const customersAdapter = new CustomersAdapter();
+    const customersAdapter = new CustomersAdapter(HttpClientBuilder.enswitch);
     this.account = new Account(customersAdapter);
   }
 };

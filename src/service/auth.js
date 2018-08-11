@@ -1,38 +1,51 @@
+const Utils = require('../utils/utils');
+
 /**
  * Utility class which stores credentials and manage JWT tokens
  */
-class AuthManager  {
+class AuthManager {
+  contructor() {
+    this._user = null;
+    this._jwt = null;
+    this._credentials = {};
+  }
   /**
    * Store the user credentials
    * @param USERNAME
    * @param PASSWORD
+   * @param TOKEN
    * @param AUTH_TYPE
    * @returns {AuthManager}
    */
-  static setCredentials({ USERNAME = '', PASSWORD = '', AUTH_TYPE = 'USER_PASS' }) {
-    switch (AUTH_TYPE) {
-      case 'USER_PASS' :
-        AuthManager._credentials = { USERNAME, PASSWORD, AUTH_TYPE };
-        break;
-      default :
-        throw new Exception(`${AUTH_TYPE} authentication type is not implemented`);
-    }
+  setCredentials({
+                         USERNAME = '',
+                         PASSWORD = '',
+                         TOKEN = '',
+                         AUTH_TYPE = 'USER_PASS',
+                       }) {
+
+    // Store the raw credentials
+    this._credentials = { AUTH_TYPE, USERNAME, PASSWORD, TOKEN };
+
+    this._checkCredentials(this._credentials);
+    this._encodeCredentials(this._credentials);
 
     //Reset the stored user data if any
-    AuthManager._user = null;
+    this._user = null;
+    this._jwt = null;
 
     return AuthManager;
   }
 
-  static get credentials() {
-    return AuthManager._credentials;
+  get credentials() {
+    return this._credentials;
   }
 
-  static get user() {
-    return AuthManager._user;
+  get user() {
+    return this._user;
   }
 
-  static getJwtToken() {
+  getJwtToken() {
     //TODO return current jwt token if exists and not expired, or fetch new one
     return AuthManager;
   }
@@ -40,18 +53,56 @@ class AuthManager  {
   /**
    * Fetch and store user info
    */
-  static async login(userApi) {
-    if (!AuthManager._user) {
+  async login(userApi) {
+    if (!this._user) {
       let response = await userApi.login();
-      AuthManager._user = response.data;
+      this._user = response.data;
     }
 
-    return AuthManager._user;
+    return this._user;
+  }
+
+  /**
+   * Checks if supplied credentials are valid
+   * @param credentials
+   * @private
+   */
+  _checkCredentials(credentials) {
+    if (['USER_PASS', 'TOKEN'].indexOf(credentials.AUTH_TYPE) === -1) {
+      throw new Error(`${credentials.AUTH_TYPE} authentication type is not implemented`);
+    }
+
+    // switch (credentials.AUTH_TYPE) {
+    //   case 'USER_PASS' :
+    //     if (!credentials.USERNAME) {
+    //       throw new Error(`username is required`);
+    //     }
+    //
+    //     if (!credentials.PASSWORD) {
+    //       throw new Error(`password is required`);
+    //     }
+    //
+    //     break;
+    //   case 'TOKEN' :
+    //     if (!credentials.TOKEN) {
+    //       throw new Error(`token is required`);
+    //     }
+    //
+    //     break;
+    //   default :
+    //     throw new Error(`${AUTH_TYPE} authentication type is not implemented`);
+    // }
+  }
+
+  /**
+   * Base64 encode username and password for Nomado API
+   * @param credentials
+   * @private
+   */
+  _encodeCredentials(credentials) {
+    this._credentials.USERNAME_B64 = Utils.toBase64(credentials.USERNAME);
+    this._credentials.PASSWORD_B64 = Utils.toBase64(credentials.PASSWORD);
   }
 };
 
-//Static store
-AuthManager._user = null;
-AuthManager._credentials = {};
-
-module.exports = AuthManager;
+module.exports = new AuthManager();

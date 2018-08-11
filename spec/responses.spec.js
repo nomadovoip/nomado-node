@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const { NomadoResponse, HttpError, EnswitchResponse } = require('../src/core/responses');
+const { NomadoResponse, HttpError, EnswitchResponse } = require('../src/utils/responses');
 
 describe('NomadoResponse', () => {
   it('should be a formatted NomadResponse object', () => {

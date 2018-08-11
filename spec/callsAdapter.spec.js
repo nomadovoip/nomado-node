@@ -2,12 +2,13 @@
 
 const CallsAdapter = require('../src/api/callsAdapter');
 const callResponse = require('./data/callSuccess.json');
-const NomadoResponse = require('../src/core/responses').NomadoResponse;
+const NomadoResponse = require('../src/utils/responses').NomadoResponse;
+const HttpClientBuilder = require('../src/http/httpClientBuilder');
 
 describe('CallsAdapter', () => {
   it('should return a successful NomadoResponse with code 200', async () => {
-    const apiAdapter = new CallsAdapter();
-    spyOn(apiAdapter.httpService, '_CALL').and.returnValue(callResponse);
+    const apiAdapter = new CallsAdapter(HttpClientBuilder.enswitch);
+    spyOn(apiAdapter.httpClient, '_CALL').and.returnValue(callResponse);
     const callData = {
       snumber: '1234',
       cnumber: '12345',
@@ -19,8 +20,8 @@ describe('CallsAdapter', () => {
   });
 
   it('should throw a NomadoResponse with code 400 when parameters are missing', (done) => {
-    const apiAdapter = new CallsAdapter();
-    spyOn(apiAdapter.httpService, '_CALL').and.returnValue(callResponse);
+    const apiAdapter = new CallsAdapter(HttpClientBuilder.enswitch);
+    spyOn(apiAdapter.httpClient, '_CALL').and.returnValue(callResponse);
 
     apiAdapter.make({})
       .catch((response) => {

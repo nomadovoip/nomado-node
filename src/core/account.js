@@ -1,4 +1,4 @@
-const NomadoResponse = require('../core/responses').NomadoResponse;
+const NomadoResponse = require('../utils/responses').NomadoResponse;
 
 /**
  * Public interface for calls handling
