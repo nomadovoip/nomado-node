@@ -17,7 +17,7 @@ class HttpClient {
     let result = await this.axios({
       method: this.HTTP_METHOD,
       url: endpoint,
-      data: data,
+      params: data,
     });
 
     return result.data;

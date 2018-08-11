@@ -13,7 +13,7 @@ const HttpClientBuilder = {
   },
 
   get enswitch() {
-    enswitchClient = enswitchClient || new Enswitch({ ...Config.api.nomado, ...auth.credentials });
+    enswitchClient = enswitchClient || new Enswitch({ ...Config.api.enswitch, ...auth.credentials });
     return enswitchClient;
   },
 };
