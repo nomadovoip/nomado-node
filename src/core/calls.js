@@ -13,7 +13,7 @@ class Calls {
    * @param config
    * @returns {Promise<NomadoResponse>}
    */
-  async make(config) {
+  make(config) {
     return this.api.make(config);
   }
 }

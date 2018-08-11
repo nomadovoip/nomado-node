@@ -29,9 +29,9 @@ class Enswitch extends HttpClient{
    * README: For full list of rest api : https://integrics.com/enswitch/guides/3.13/en/dev/json/
    * AUTHOR : Alex
   */
-  async _CALL(endpoint = '', data = {}) {
-    data = await this.AddSUDOCredentials(data);
-    super._CALL(endpoint, data);
+  _CALL(endpoint = '', data = {}) {
+    data = this.AddSUDOCredentials(data);
+    return super._CALL(endpoint, data);
   }
 }
 

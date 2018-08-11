@@ -19,15 +19,12 @@ describe('CallsAdapter', () => {
     expect(response.code).toBe('200');
   });
 
-  it('should throw a NomadoResponse with code 400 when parameters are missing', (done) => {
+  it('should throw a NomadoResponse when parameters are missing', () => {
     const apiAdapter = new CallsAdapter(HttpClientBuilder.enswitch);
     spyOn(apiAdapter.httpClient, '_CALL').and.returnValue(callResponse);
 
-    apiAdapter.make({})
-      .catch((response) => {
-        expect(response instanceof NomadoResponse).toBe(true);
-        expect(response.code).toBe('400');
-        done();
-      });
+    expect(() => {
+      apiAdapter.make({});
+    }).toThrow();
   });
 });

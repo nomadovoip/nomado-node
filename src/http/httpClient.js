@@ -12,19 +12,15 @@ class HttpClient {
 
   /**
    *  CALL THE API
-  */
+   */
   async _CALL(endpoint = '', data = {}) {
-    try {
-      let result = await axios({
-        method: this.HTTP_METHOD,
-        url: endpoint,
-        data: data,
-      });
+    let result = await this.axios({
+      method: this.HTTP_METHOD,
+      url: endpoint,
+      data: data,
+    });
 
-      return result.data;
-    } catch (e) {
-      throw e;
-    }
+    return result.data;
   }
 }
 

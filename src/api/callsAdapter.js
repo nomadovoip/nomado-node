@@ -11,7 +11,7 @@ class CallsAdapter extends ApiAdapter {
    * @param data
    * @returns {Promise<NomadoResponse>}
    */
-  async make (data = {}) {
+  make(data = {}) {
     const endpoint = 'calls/make';
     const requiredParams = [
       'snumber', 'cnumber',
