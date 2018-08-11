@@ -71,27 +71,6 @@ class AuthManager {
     if (['USER_PASS', 'TOKEN'].indexOf(credentials.AUTH_TYPE) === -1) {
       throw new Error(`${credentials.AUTH_TYPE} authentication type is not implemented`);
     }
-
-    // switch (credentials.AUTH_TYPE) {
-    //   case 'USER_PASS' :
-    //     if (!credentials.USERNAME) {
-    //       throw new Error(`username is required`);
-    //     }
-    //
-    //     if (!credentials.PASSWORD) {
-    //       throw new Error(`password is required`);
-    //     }
-    //
-    //     break;
-    //   case 'TOKEN' :
-    //     if (!credentials.TOKEN) {
-    //       throw new Error(`token is required`);
-    //     }
-    //
-    //     break;
-    //   default :
-    //     throw new Error(`${AUTH_TYPE} authentication type is not implemented`);
-    // }
   }
 
   /**

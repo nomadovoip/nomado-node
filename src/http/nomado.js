@@ -4,7 +4,7 @@ const HttpClient = require('./httpClient');
 class Nomado extends HttpClient {
   constructor(config = {}) {
     super(config);
-    this.setAuthHeader(config);
+    this.prepareAuthHeader(config);
   }
 
   /**
@@ -27,6 +27,7 @@ class Nomado extends HttpClient {
         return `BEARER ${config.TOKEN}`;
     }
 
+    // Add authentication header to axios
     this.axios.interceptors.request.use(
       config => {
         config.headers.authorization = this.AUTH_HEADER;
