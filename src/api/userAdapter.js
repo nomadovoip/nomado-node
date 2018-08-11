@@ -9,7 +9,7 @@ class UserAdapter extends ApiAdapter {
    * Fetch user data
    * @returns {Promise<NomadoResponse>}
    */
-  async login () {
+  login () {
     const endpoint = 'user/login';
     return this._call(endpoint);
   }
