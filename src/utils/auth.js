@@ -1,5 +1,8 @@
 const Utils = require('../utils/utils');
 
+/**
+ * Helper to manage credentials
+ */
 const Auth = {
   /**
    * Format and return the user credentials

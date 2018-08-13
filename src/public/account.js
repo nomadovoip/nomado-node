@@ -1,7 +1,7 @@
 const NomadoResponse = require('../utils/responses').NomadoResponse;
 
 /**
- * Public interface for calls handling
+ * Public interface to access account information
  */
 class Account {
   constructor(api) {
