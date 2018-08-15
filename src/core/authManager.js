@@ -1,3 +1,5 @@
+const Validator = require('../utils/validator');
+
 /**
  * Utility class which stores credentials and manage JWT tokens
  */
