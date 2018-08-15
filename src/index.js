@@ -7,6 +7,7 @@ class NomadoClient {
     const publicInterface = new InterfaceBuilder(authConfig);
     this.calls = publicInterface.calls;
     this.account = publicInterface.account;
+    this.sms = publicInterface.sms;
   }
 };
 
