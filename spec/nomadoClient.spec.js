@@ -3,6 +3,7 @@
 const NomadoClientSpec = require('../index');
 const Calls = require('../src/public/calls');
 const Account = require('../src/public/account');
+const Sms = require('../src/public/sms');
 
 describe('NomadoClient', () => {
 
@@ -16,6 +17,12 @@ describe('NomadoClient', () => {
     let credentials1 = { USERNAME: 'user1', PASSWORD: 'pass2' };
     const nomadoClient = new NomadoClientSpec(credentials1);
     expect(nomadoClient.account).toEqual(jasmine.any(Account));
+  });
+
+  it('should return build a Sms object', () => {
+    let credentials1 = { USERNAME: 'user1', PASSWORD: 'pass2' };
+    const nomadoClient = new NomadoClientSpec(credentials1);
+    expect(nomadoClient.sms).toEqual(jasmine.any(Sms));
   });
 
   it('should call the API with different credentials', () => {

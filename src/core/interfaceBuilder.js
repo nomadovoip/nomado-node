@@ -1,8 +1,10 @@
 const CallsAdapter = require('../api/callsAdapter');
 const UserAdapter = require('../api/userAdapter');
 const CustomersAdapter = require('../api/customersAdapter');
+const SmsAdapter = require('../api/smsAdapter');
 const Calls = require('../public/calls');
 const Account = require('../public/account');
+const Sms = require('../public/sms');
 const HttpClientBuilder = require('../core/httpClientBuilder');
 const AuthUtils = require('../utils/auth');
 const AuthManager = require('./authManager');
@@ -36,6 +38,15 @@ class InterfaceBuilder {
     }
 
     return this._account;
+  }
+
+  get sms() {
+    if (!this._sms) {
+      const customersAdapter = new SmsAdapter(this.httpClientBuilder.enswitch, this.authManager);
+      this._sms = new Sms(customersAdapter);
+    }
+
+    return this._sms;
   }
 };
 
