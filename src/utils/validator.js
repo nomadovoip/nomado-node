@@ -23,8 +23,7 @@ class Validator {
   }
 
   static throwInvalidAPIResponse(requiredItems, call) {
-    const message = `Some expected data is missing in the response from 
-    ${call} : ${requiredItems.join(', ')}.`;
+    const message = `Some expected data is missing in the response from '${call}' : ${requiredItems.join(', ')}.`;
     throw new NomadoResponse({ code: '400', reason: message });
   }
 };

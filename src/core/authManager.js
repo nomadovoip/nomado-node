@@ -1,4 +1,5 @@
 const Validator = require('../utils/validator');
+const { HttpError } = require('../utils/responses');
 
 /**
  * Utility class which stores credentials and manage JWT tokens
@@ -25,8 +26,12 @@ class AuthManager {
     if (!this._user) {
       let response = await this.api.login();
       if (!response.data.customer) {
-        //Throw an error if the response does not contain the user id
-        Validator.throwInvalidAPIResponse(['customer'], endpoint);
+        // If the response does not contain the user id
+        if (response.code >= 300) {
+          throw HttpError.buildResponse(response);
+        } else {
+          Validator.throwInvalidAPIResponse(['customer'], 'login');
+        }
       }
 
       this._user = response.data;

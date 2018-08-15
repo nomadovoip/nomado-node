@@ -4,7 +4,7 @@ const _ = require('lodash');
  * Default formatted response
  */
 class NomadoResponse {
-  constructor ({ code, reason = '', data = {} }) {
+  constructor({ code, reason = '', data = {} }) {
     this.code = code;
     this.reason = reason;
     this.data = data;
@@ -16,11 +16,15 @@ class NomadoResponse {
  */
 class HttpError {
   // Parse the exception coming from Axios and return a formatted NomadoResponse
-  static buildResponse (httpError) {
+  static buildResponse(error) {
+    if (error instanceof NomadoResponse) {
+      return error;
+    }
+
     const formattedError = {
-      code: (httpError.response || {}).status,
-      reason: (httpError.response || {}).statusText,
-      data: {},
+      code: error.code || (error.response || {}).status,
+      reason: error.message,
+      data: error.data,
     };
     return new NomadoResponse(formattedError);
   }
@@ -34,7 +38,7 @@ class HttpError {
  */
 class EnswitchResponse {
   // Parse the response coming from the Enswitch API and return a formatted NomadoResponse
-  static buildResponse (responses, responseData) {
+  static buildResponse(responses, responseData) {
     // Take the first object from responses array
     const firstResponse = _.isArray(responses) ? responses[0] || {} : {};
 
