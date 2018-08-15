@@ -1,5 +1,3 @@
-const NomadoResponse = require('../utils/responses').NomadoResponse;
-
 /**
  * Public interface for calls handling
  */
