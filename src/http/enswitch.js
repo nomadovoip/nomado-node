@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const HttpClient = require('./httpClient');
 
-class Enswitch extends HttpClient{
+class Enswitch extends HttpClient {
   constructor(config = {}) {
     super(config);
     this.API_USER = config.USERNAME;
@@ -15,10 +15,7 @@ class Enswitch extends HttpClient{
 
   // ADD USERNAME AND PASSWORD IN DATA
   AddSUDOCredentials(data) {
-    data.auth_username = this.API_USER;
-    data.auth_password = this.API_PASS;
-
-    return data;
+    return { auth_username: this.API_USER, auth_password: this.API_PASS, ...data };
   }
 
   /* CALL THE API
