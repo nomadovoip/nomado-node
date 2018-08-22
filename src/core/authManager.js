@@ -25,13 +25,13 @@ class AuthManager {
   async login() {
     if (!this._user) {
       let response = await this.api.login();
+      if (!response.success) {
+        throw HttpError.buildResponse(response);
+      }
+
       if (!response.data.customer) {
         // If the response does not contain the user id
-        if (response.code >= 300) {
-          throw HttpError.buildResponse(response);
-        } else {
-          Validator.throwInvalidAPIResponse(['customer'], 'login');
-        }
+        throw Validator.invalidAPIResponse(['customer'], 'login');
       }
 
       this._user = response.data;

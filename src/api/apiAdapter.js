@@ -37,12 +37,8 @@ class ApiAdapter {
       responses = httpResponse.responses || null;
     }
     catch (e) {
-      if (!e.response) {
-        // Reject promise if the http request failed
-        throw HttpError.buildResponse(e);
-      } else {
-        return HttpError.buildResponse(e);
-      }
+      // Http client error occured
+      return HttpError.buildResponse(e);
     }
 
     // Return a NomadoResponse

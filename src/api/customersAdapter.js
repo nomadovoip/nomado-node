@@ -17,7 +17,7 @@ class CustomersAdapter extends ApiAdapter {
     let response = await this._call(endpoint, data);
 
     //Only return balance related data
-    response.data = _.pick(response.data, [ 'balance' ]);
+    response.data = _.pick(response.data, ['balance']);
 
     return response;
   }
