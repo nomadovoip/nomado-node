@@ -12,7 +12,7 @@ class NomadoResponse {
   }
 }
 
-class NomadoError extends  NomadoResponse {}
+class NomadoError extends NomadoResponse {}
 
 /**
  * Wrapper for HTTP requests errors coming from the Axios library
@@ -30,9 +30,9 @@ class HttpError {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       formattedError = {
-        code: error.status,
-        reason: error.headers,
-        data: error.data,
+        code: error.response.status,
+        reason: error.response.statusText,
+        data: error.response.data,
       };
     } else if (error.request) {
       // The request was made but no response was received
