@@ -37,12 +37,8 @@ class ApiAdapter {
       responses = httpResponse.responses || null;
     }
     catch (e) {
-      // Throw exception if the http request failed
-      throw HttpError.buildResponse(e);
-    }
-
-    if (!responseData || this._hasError(responses)) {
-      throw EnswitchResponse.buildResponse(responses, responseData);
+      // Http client error occured
+      return HttpError.buildResponse(e);
     }
 
     // Return a NomadoResponse

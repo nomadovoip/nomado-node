@@ -20,7 +20,7 @@ describe('Account Interface', () => {
   });
 
   beforeEach(() => {
-    spyOn(this.nomado.account.api.authManager.api, 'login').and.returnValue(userResponse);
+    spyOn(this.nomado.account.api.authManager.api, 'login').and.callThrough();
 
     //Reset auth stored user data if any
     this.authManager._user = null;
