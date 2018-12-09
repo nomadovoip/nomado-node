@@ -8,6 +8,7 @@ class NomadoClient {
     this.calls = publicInterface.calls;
     this.account = publicInterface.account;
     this.sms = publicInterface.sms;
+    this.hlr = publicInterface.hlr;
   }
 };
 

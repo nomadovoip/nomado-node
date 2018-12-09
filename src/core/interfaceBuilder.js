@@ -2,9 +2,11 @@ const CallsAdapter = require('../api/callsAdapter');
 const UserAdapter = require('../api/userAdapter');
 const CustomersAdapter = require('../api/customersAdapter');
 const SmsAdapter = require('../api/smsAdapter');
+const HlrAdapter = require('../api/hlrAdapter');
 const Calls = require('../public/calls');
 const Account = require('../public/account');
 const Sms = require('../public/sms');
+const Hlr = require('../public/hlr');
 const HttpClientBuilder = require('../core/httpClientBuilder');
 const AuthUtils = require('../utils/auth');
 const AuthManager = require('./authManager');
@@ -47,6 +49,15 @@ class InterfaceBuilder {
     }
 
     return this._sms;
+  }
+
+  get hlr() {
+    if (!this._hlr) {
+      const customersAdapter = new HlrAdapter(this.httpClientBuilder.nomado, this.authManager);
+      this._hlr = new Hlr(customersAdapter);
+    }
+
+    return this._hlr;
   }
 };
 
