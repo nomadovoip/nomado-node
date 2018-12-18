@@ -1,37 +1,15 @@
-const Calls = require('./core/calls');
-const Account = require('./core/account');
-const auth = require('./service/auth');
-const CallsAdapter = require('./api/callsAdapter');
-const CustomersAdapter = require('./api/customersAdapter');
-
+const InterfaceBuilder = require('./core/interfaceBuilder');
 /**
  * The Nomado SDK client which exposes public interfaces
  */
 class NomadoClient {
-  constructor (authConfig = {}) {
+  constructor(authConfig = {}) {
+    const publicInterface = new InterfaceBuilder(authConfig);
+    this.calls = publicInterface.calls;
+    this.account = publicInterface.account;
 
-    // Store the credentials
-    auth.setCredentials(authConfig);
-
-    // Initialize the public interfaces
-    this.buildCallsInterface();
-    this.buildAccountInterface();
-  }
-
-  /**
-   * Initialize the Calls public interface
-   */
-  buildCallsInterface() {
-    const callsAdapter = new CallsAdapter();
-    this.calls = new Calls(callsAdapter);
-  }
-
-  /**
-   * Initialize the Account public interface
-   */
-  buildAccountInterface() {
-    const customersAdapter = new CustomersAdapter();
-    this.account = new Account(customersAdapter);
+    // this.hlr = publicInterface.hlr;
+    // this.sms = publicInterface.sms;
   }
 };
 

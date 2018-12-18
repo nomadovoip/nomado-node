@@ -1,19 +1,12 @@
-const auth = require('../service/auth');
-const Enswitch = require('../http/enswitch');
-const { EnswitchResponse, HttpError } = require('../core/responses');
-const Validator = require('../utils/validator');
-
-const httpConfig = {
-  SERVER: 'npbx.nomado.eu',
-  TRANSPORT: 'https',
-};
+const { EnswitchResponse, HttpError } = require('../utils/responses');
 
 /**
  * An adapter for the Enswitch Calls API
  */
-class EnswitchAdapter {
-  constructor() {
-    this.httpService = new Enswitch({ ...httpConfig, ...auth.credentials });
+class Api {
+  constructor(httpClient, authManager = {}) {
+    this.httpClient = httpClient;
+    this.authManager = authManager;
   }
 
   /**
@@ -39,17 +32,13 @@ class EnswitchAdapter {
     let responseData;
     try {
       // Wait for http response
-      const httpResponse = await this.httpService._CALL(endpoint, data);
+      const httpResponse = await this.httpClient._CALL(endpoint, data);
       responseData = httpResponse.data || null;
       responses = httpResponse.responses || null;
     }
     catch (e) {
-      // Throw exception if the http request failed
-      throw HttpError.buildResponse(e);
-    }
-
-    if (!responseData || this._hasError(responses)) {
-      throw EnswitchResponse.buildResponse(responses, responseData);
+      // Http client error occured
+      return HttpError.buildResponse(e);
     }
 
     // Return a NomadoResponse
@@ -57,4 +46,4 @@ class EnswitchAdapter {
   }
 };
 
-module.exports = EnswitchAdapter;
+module.exports = Api;

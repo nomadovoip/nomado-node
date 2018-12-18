@@ -2,7 +2,8 @@
   "data" : {
     "country" : "BE",
     "language" : "en",
-    "customer" : "1"
+    "customer" : "1",
+    "balance" : "5"
   },
   "responses" : [
     {

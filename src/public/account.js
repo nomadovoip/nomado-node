@@ -1,7 +1,5 @@
-const NomadoResponse = require('../core/responses').NomadoResponse;
-
 /**
- * Public interface for calls handling
+ * Public interface to access account information
  */
 class Account {
   constructor(api) {

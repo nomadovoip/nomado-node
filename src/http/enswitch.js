@@ -1,12 +1,9 @@
 const _ = require('lodash');
-const axiosInstance = require('axios');
+const HttpClient = require('./httpClient');
 
-class Enswitch {
+class Enswitch extends HttpClient {
   constructor(config = {}) {
-    this.SERVER_URL = this.prepareServerURL(config);
-    this.axios = axiosInstance.create({
-      baseURL: this.SERVER_URL,
-    });
+    super(config);
     this.API_USER = config.USERNAME;
     this.API_PASS = config.PASSWORD;
   }
@@ -18,10 +15,7 @@ class Enswitch {
 
   // ADD USERNAME AND PASSWORD IN DATA
   AddSUDOCredentials(data) {
-    data.auth_username = this.API_USER;
-    data.auth_password = this.API_PASS;
-
-    return data;
+    return { auth_username: this.API_USER, auth_password: this.API_PASS, ...data };
   }
 
   /* CALL THE API
@@ -32,18 +26,9 @@ class Enswitch {
    * README: For full list of rest api : https://integrics.com/enswitch/guides/3.13/en/dev/json/
    * AUTHOR : Alex
   */
-  async _CALL(endpoint = '', data = {}) {
-    data = await this.AddSUDOCredentials(data);
-    try {
-      let result = await this.axios.get(endpoint, {
-        params: data,
-      });
-
-      return result.data;
-    } catch (e) {
-      throw e;
-    }
-
+  _CALL(endpoint = '', data = {}) {
+    data = this.AddSUDOCredentials(data);
+    return super._CALL(endpoint, data);
   }
 }
 

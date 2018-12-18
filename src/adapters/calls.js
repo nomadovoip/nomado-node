@@ -1,17 +1,17 @@
-const EnswitchAdapter = require('./enswitchAdapter');
+const ApiAdapter = require('./api');
 const Validator = require('../utils/validator');
 
 /**
  * An adapter for the Enswitch Calls API
  */
-class CallsAdapter extends EnswitchAdapter {
+class Calls extends ApiAdapter {
   /**
    * Make a call
    * Required params : cnumber, snumber
    * @param data
    * @returns {Promise<NomadoResponse>}
    */
-  async make (data = {}) {
+  make(data = {}) {
     const endpoint = 'calls/make';
     const requiredParams = [
       'snumber', 'cnumber',
@@ -21,4 +21,4 @@ class CallsAdapter extends EnswitchAdapter {
   }
 };
 
-module.exports = CallsAdapter;
+module.exports = Calls;

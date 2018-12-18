@@ -1,34 +1,37 @@
 /* eslint-env jasmine */
 
-const auth = require('../src/service/auth');
-const UserAdapter = require('../src/api/userAdapter');
+const AuthManager = require('../src/core/authManager');
+const authUtils = require('../src/utils/credentials');
+const UserAdapter = require('../src/adapters/user');
 const userResponse = require('./data/userSuccess.json');
+const HttpClientBuilder = require('../src/core/httpClientBuilder');
 
 describe('AuthManager', () => {
-  beforeEach(() => {
-    //Reset auth stored user data if any
-    auth._user = null;
+  beforeAll(() => {
+    let credentials = { USERNAME: 'user', PASSWORD: 'pass' };
+    this.httpClientBuilder = new HttpClientBuilder(credentials);
+
+    const userAdapter = new UserAdapter(this.httpClientBuilder.enswitch);
+    this.authManager = new AuthManager(userAdapter, credentials);
   });
 
-  it('should store the credentials', () => {
-    const myCredentials = { USERNAME: 'user', PASSWORD: 'pass' };
-    auth.setCredentials(myCredentials);
-    expect(auth.credentials.USERNAME).toBe(myCredentials.USERNAME);
-    expect(auth.credentials.PASSWORD).toBe(myCredentials.PASSWORD);
+  beforeEach(() => {
+    //Reset auth stored user data if any
+    this.authManager._user = null;
   });
 
   it('should return user data with customer id', async () => {
-    const userAdapter = new UserAdapter();
-    spyOn(userAdapter.httpService, '_CALL').and.returnValue(userResponse);
-    const user = await auth.login(userAdapter);
+    const userAdapter = new UserAdapter(this.httpClientBuilder.enswitch);
+    spyOn(userAdapter.httpClient, '_CALL').and.returnValue(userResponse);
+    const user = await this.authManager.login(userAdapter);
     expect(user.customer).toEqual(jasmine.any(String));
   });
 
   it('should throw an error if customer id is missing', (done) => {
-    const userAdapter = new UserAdapter();
-    spyOn(userAdapter.httpService, '_CALL').and.returnValue({});
+    const userAdapter = new UserAdapter(this.httpClientBuilder.enswitch);
+    spyOn(userAdapter.httpClient, '_CALL').and.returnValue({});
 
-    auth.login(userAdapter)
+    this.authManager.login(userAdapter)
       .catch((error) => {
         done();
       });
@@ -37,7 +40,7 @@ describe('AuthManager', () => {
   it('should throw an error if using an unknown authentication method', () => {
     expect(() => {
       const myCredentials = { USERNMAE: 'user', PASSWORD: 'pass', AUTH_TYPE: 'UNKNOWN' };
-      auth.setCredentials(myCredentials);
+      authUtils.parse(myCredentials);
     }).toThrow();
   });
 });

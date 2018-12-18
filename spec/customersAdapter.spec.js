@@ -1,15 +1,24 @@
 /* eslint-env jasmine */
 
-const CustomersAdapter = require('../src/api/customersAdapter');
+const CustomersAdapter = require('../src/adapters/customers');
+const UserAdapter = require('../src/adapters/user');
 const customerResponse = require('./data/customerSuccess.json');
 const userResponse = require('./data/userSuccess.json');
-const NomadoResponse = require('../src/core/responses').NomadoResponse;
+const NomadoResponse = require('../src/utils/responses').NomadoResponse;
+const HttpClientBuilder = require('../src/core/httpClientBuilder');
+const AuthManager = require('../src/core/authManager');
 
 describe('CustomersAdapter', () => {
+  beforeAll(() => {
+    let credentials = { USERNAME: 'user', PASSWORD: 'pass' };
+    this.httpClientBuilder = new HttpClientBuilder(credentials);
+    const userAdapter = new UserAdapter(this.httpClientBuilder.enswitch);
+    this.authManager = new AuthManager(userAdapter, credentials);
+  });
+
   it('should return a successful NomadoResponse with code 200', async () => {
-    const adapter = new CustomersAdapter();
-    spyOn(adapter.userAdapter.httpService, '_CALL').and.returnValue(userResponse);
-    spyOn(adapter.httpService, '_CALL').and.returnValue(customerResponse);
+    const adapter = new CustomersAdapter(this.httpClientBuilder.enswitch, this.authManager);
+    spyOn(adapter.authManager.api.httpClient, '_CALL').and.returnValue(userResponse);
 
     let response = await adapter.getBalance();
     expect(response instanceof NomadoResponse).toBe(true);

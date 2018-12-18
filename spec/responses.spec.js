@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const { NomadoResponse, HttpError, EnswitchResponse } = require('../src/core/responses');
+const { NomadoResponse, HttpError, EnswitchResponse } = require('../src/utils/responses');
 
 describe('NomadoResponse', () => {
   it('should be a formatted NomadResponse object', () => {
@@ -14,9 +14,18 @@ describe('NomadoResponse', () => {
 
 describe('HttpError', () => {
   it('should return a valid NomadoResponse', () => {
-    const myResponse = {  };
+    const myResponse = { response: {} };
     const nomadoResponse = HttpError.buildResponse(myResponse);
     expect(nomadoResponse instanceof NomadoResponse).toBe(true);
+  });
+});
+
+describe('HttpError', () => {
+  it('should throw an Error when something unexpected happened', () => {
+    const myResponse = { };
+    expect(() => {
+      HttpError.buildResponse(myResponse);
+    }).toThrow();
   });
 });
 
