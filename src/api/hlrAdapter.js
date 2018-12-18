@@ -7,15 +7,35 @@ const Validator = require('../utils/validator');
  */
 class HlrAdapter extends ApiAdapter {
   /**
-   * Get HLR
+   * Fetch HLR information
    * Required params : number
    * @param options
    */
-  get(data = {}) {
-    const endpoint = 'hlr/get';
+  fetch(data = {}) {
+    const endpoint = 'hlr/';
 
-    const requiredParams = ['number'];
+    const requiredParams = ['numbers'];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
+
+    // 'numbers' param needs to be an array of numbers
+    data.numbers = _.castArray(data.numbers);
+
+    return this._call(endpoint, data);
+  }
+
+  /**
+   * Validate HLR
+   * Required params : number
+   * @param options
+   */
+  validate(data = {}) {
+    const endpoint = 'hlr/validate';
+
+    const requiredParams = ['numbers'];
+    Validator.validateRequiredParams(requiredParams, data, endpoint);
+
+    // 'numbers' param needs to be an array of numbers
+    data.numbers = _.castArray(data.numbers);
 
     return this._call(endpoint, data);
   }
