@@ -1,11 +1,11 @@
-const ApiAdapter = require('./apiAdapter');
+const ApiAdapter = require('./api');
 const _ = require('lodash');
 const { HttpError } = require('../utils/responses');
 
 /**
  * An adapter for the Enswitch Customers API
  */
-class CustomersAdapter extends ApiAdapter {
+class Customers extends ApiAdapter {
   /**
    * Fetch account current balance
    * Optional params : id (account id)
@@ -37,4 +37,4 @@ class CustomersAdapter extends ApiAdapter {
   }
 };
 
-module.exports = CustomersAdapter;
+module.exports = Customers;

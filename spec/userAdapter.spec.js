@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const UserAdapter = require('../src/api/userAdapter');
+const UserAdapter = require('../src/adapters/user');
 const userResponse = require('./data/userSuccess.json');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const HttpClientBuilder = require('../src/core/httpClientBuilder');

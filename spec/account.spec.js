@@ -3,8 +3,8 @@
 // const auth = require('../src/service/auth');
 const NomadoClient = require('../');
 const Account = require('../src/public/account');
-const CustomersAdapter = require('../src/api/customersAdapter');
-const UserAdapter = require('../src/api/userAdapter');
+const CustomersAdapter = require('../src/adapters/customers');
+const UserAdapter = require('../src/adapters/user');
 const userResponse = require('./data/userSuccess.json');
 const HttpClientBuilder = require('../src/core/httpClientBuilder');
 

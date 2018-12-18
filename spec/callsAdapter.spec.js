@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const CallsAdapter = require('../src/api/callsAdapter');
+const CallsAdapter = require('../src/adapters/calls');
 const callResponse = require('./data/callSuccess.json');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const HttpClientBuilder = require('../src/core/httpClientBuilder');

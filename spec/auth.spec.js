@@ -1,8 +1,8 @@
 /* eslint-env jasmine */
 
 const AuthManager = require('../src/core/authManager');
-const authUtils = require('../src/utils/auth');
-const UserAdapter = require('../src/api/userAdapter');
+const authUtils = require('../src/utils/credentials');
+const UserAdapter = require('../src/adapters/user');
 const userResponse = require('./data/userSuccess.json');
 const HttpClientBuilder = require('../src/core/httpClientBuilder');
 

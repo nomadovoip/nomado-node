@@ -1,9 +1,9 @@
-const ApiAdapter = require('./apiAdapter');
+const ApiAdapter = require('./api');
 
 /**
  * An adapter for the Enswitch User API
  */
-class UserAdapter extends ApiAdapter {
+class User extends ApiAdapter {
 
   /**
    * Fetch user data
@@ -15,4 +15,4 @@ class UserAdapter extends ApiAdapter {
   }
 };
 
-module.exports = UserAdapter;
+module.exports = User;

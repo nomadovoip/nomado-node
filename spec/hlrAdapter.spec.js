@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-const HlrAdapter = require('../src/api/hlrAdapter');
+const HlrAdapter = require('../src/adapters/hlr');
 const smsResponse = require('./data/smsSuccess.json');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const HttpClientBuilder = require('../src/core/httpClientBuilder');

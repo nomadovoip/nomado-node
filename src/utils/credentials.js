@@ -3,7 +3,7 @@ const Utils = require('../utils/utils');
 /**
  * Helper to manage credentials
  */
-const Auth = {
+const Credentials = {
   /**
    * Format and return the user credentials
    * @param USERNAME
@@ -22,8 +22,8 @@ const Auth = {
     // Store the raw credentials
     let credentials = { AUTH_TYPE, USERNAME, PASSWORD, TOKEN };
 
-    Auth.check(credentials);
-    credentials = Auth.encode(credentials);
+    Credentials.check(credentials);
+    credentials = Credentials.encode(credentials);
 
     return credentials;
   },
@@ -67,4 +67,4 @@ const Auth = {
   },
 };
 
-module.exports = Auth;
+module.exports = Credentials;

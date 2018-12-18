@@ -3,7 +3,7 @@ const { EnswitchResponse, HttpError } = require('../utils/responses');
 /**
  * An adapter for the Enswitch Calls API
  */
-class ApiAdapter {
+class Api {
   constructor(httpClient, authManager = {}) {
     this.httpClient = httpClient;
     this.authManager = authManager;
@@ -46,4 +46,4 @@ class ApiAdapter {
   }
 };
 
-module.exports = ApiAdapter;
+module.exports = Api;

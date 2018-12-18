@@ -1,14 +1,14 @@
-const CallsAdapter = require('../api/callsAdapter');
-const UserAdapter = require('../api/userAdapter');
-const CustomersAdapter = require('../api/customersAdapter');
-const SmsAdapter = require('../api/smsAdapter');
-const HlrAdapter = require('../api/hlrAdapter');
+const CallsAdapter = require('../adapters/calls');
+const UserAdapter = require('../adapters/user');
+const CustomersAdapter = require('../adapters/customers');
+const SmsAdapter = require('../adapters/sms');
+const HlrAdapter = require('../adapters/hlr');
 const Calls = require('../public/calls');
 const Account = require('../public/account');
 const Sms = require('../public/sms');
 const Hlr = require('../public/hlr');
 const HttpClientBuilder = require('../core/httpClientBuilder');
-const AuthUtils = require('../utils/auth');
+const Credentials = require('../utils/credentials');
 const AuthManager = require('./authManager');
 
 /**
@@ -16,7 +16,7 @@ const AuthManager = require('./authManager');
  */
 class InterfaceBuilder {
   constructor(authConfig) {
-    let credentials = AuthUtils.parse(authConfig);
+    let credentials = Credentials.parse(authConfig);
     this.httpClientBuilder = new HttpClientBuilder(credentials);
 
     // Build Auth

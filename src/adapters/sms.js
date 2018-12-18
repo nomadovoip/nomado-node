@@ -1,11 +1,11 @@
-const ApiAdapter = require('./apiAdapter');
+const ApiAdapter = require('./api');
 const _ = require('lodash');
 const Validator = require('../utils/validator');
 
 /**
  * An adapter for the SMS API
  */
-class SmsAdapter extends ApiAdapter {
+class Sms extends ApiAdapter {
   /**
    * Send SMS
    * Required params : to, from, message
@@ -27,4 +27,4 @@ class SmsAdapter extends ApiAdapter {
   }
 };
 
-module.exports = SmsAdapter;
+module.exports = Sms;

@@ -1,7 +1,7 @@
 /* eslint-env jasmine */
 
-const CustomersAdapter = require('../src/api/customersAdapter');
-const UserAdapter = require('../src/api/userAdapter');
+const CustomersAdapter = require('../src/adapters/customers');
+const UserAdapter = require('../src/adapters/user');
 const customerResponse = require('./data/customerSuccess.json');
 const userResponse = require('./data/userSuccess.json');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;

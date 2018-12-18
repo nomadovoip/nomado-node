@@ -1,10 +1,10 @@
-const ApiAdapter = require('./apiAdapter');
+const ApiAdapter = require('./api');
 const Validator = require('../utils/validator');
 
 /**
  * An adapter for the Enswitch Calls API
  */
-class CallsAdapter extends ApiAdapter {
+class Calls extends ApiAdapter {
   /**
    * Make a call
    * Required params : cnumber, snumber
@@ -21,4 +21,4 @@ class CallsAdapter extends ApiAdapter {
   }
 };
 
-module.exports = CallsAdapter;
+module.exports = Calls;

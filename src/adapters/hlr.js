@@ -1,11 +1,11 @@
-const ApiAdapter = require('./apiAdapter');
+const ApiAdapter = require('./api');
 const _ = require('lodash');
 const Validator = require('../utils/validator');
 
 /**
  * An adapter for the HLR API
  */
-class HlrAdapter extends ApiAdapter {
+class Hlr extends ApiAdapter {
   /**
    * Fetch HLR information
    * Required params : number
@@ -41,4 +41,4 @@ class HlrAdapter extends ApiAdapter {
   }
 };
 
-module.exports = HlrAdapter;
+module.exports = Hlr;
