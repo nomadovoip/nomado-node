@@ -16,7 +16,7 @@ const Auth = {
           USERNAME = '',
           PASSWORD = '',
           TOKEN = '',
-          AUTH_TYPE = 'USER_PASS',
+          AUTH_TYPE = 'BASIC',
         }) {
 
     // Store the raw credentials
@@ -35,7 +35,7 @@ const Auth = {
 
   check(credentials) {
     switch (credentials.AUTH_TYPE) {
-      case 'USER_PASS' :
+      case 'BASIC' :
         if (!credentials.USERNAME) {
           throw new Error(`username is required`);
         }
@@ -62,8 +62,7 @@ const Auth = {
    * @private
    */
   encode(credentials) {
-    credentials.USERNAME_B64 = Utils.toBase64(credentials.USERNAME);
-    credentials.PASSWORD_B64 = Utils.toBase64(credentials.PASSWORD);
+    credentials.B64 = Utils.toBase64(credentials.USERNAME + ':' + credentials.PASSWORD);
     return credentials;
   },
 };

@@ -21,8 +21,8 @@ class Nomado extends HttpClient {
     switch (config.AUTH_TYPE) {
       case 'JWT' :
         return `JWT ${config.JWT}`;
-      case 'USER_PASS' :
-        return `SIMPLE ${config.USERNAME_B64} ${config.PASSWORD_B64}`;
+      case 'BASIC' :
+        return `BASIC ${config.B64}`;
       case 'TOKEN' :
         return `BEARER ${config.TOKEN}`;
     }

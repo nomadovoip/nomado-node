@@ -15,7 +15,7 @@ describe('NomadoClient', () => {
 
   it('should generate a valid SIMPLE auth header', () => {
     var header = new Nomado().prepareAuthHeader({
-      AUTH_TYPE: 'USER_PASS',
+      AUTH_TYPE: 'BASIC',
       USERNAME_B64: 'username',
       PASSWORD_B64: 'pass',
     });
