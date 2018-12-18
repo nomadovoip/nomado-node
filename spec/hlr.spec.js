@@ -5,7 +5,7 @@ const Hlr = require('../src/public/hlr');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const smsResponse = require('./data/smsSuccess.json');
 
-describe('HLR Interface', () => {
+xdescribe('HLR Interface', () => {
   it('should create an instance of HLR', () => {
     const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     expect(nomado.hlr instanceof Hlr).toBe(true);

@@ -13,12 +13,11 @@ describe('NomadoClient', () => {
     expect(path).toBe('BEARER 12345');
   });
 
-  it('should generate a valid SIMPLE auth header', () => {
+  it('should generate a valid BASIC auth header', () => {
     var header = new Nomado().prepareAuthHeader({
       AUTH_TYPE: 'BASIC',
-      USERNAME_B64: 'username',
-      PASSWORD_B64: 'pass',
+      B64: 'username:pass',
     });
-    expect(header).toBe('SIMPLE username pass');
+    expect(header).toBe('BASIC username:pass');
   });
 });

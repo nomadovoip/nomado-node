@@ -5,7 +5,7 @@ const Sms = require('../src/public/sms');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const smsResponse = require('./data/smsSuccess.json');
 
-describe('Sms Interface', () => {
+xdescribe('Sms Interface', () => {
   it('should create an instance of SMS', () => {
     const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     expect(nomado.sms instanceof Sms).toBe(true);
