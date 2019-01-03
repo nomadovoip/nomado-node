@@ -17,7 +17,7 @@ class Sms extends ApiAdapter {
     // Default value for unicode
     let data = { unicode: true, ...options };
 
-    const requiredParams = ['to', 'from', 'message', 'unicode'];
+    const requiredParams = ['to', 'message', 'unicode'];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
 
     // 'to' param needs to be an array of numbers

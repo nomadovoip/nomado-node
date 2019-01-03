@@ -2,7 +2,7 @@ const Config = {
   api: {
     nomado: {
       SERVER: 'api.nomado.eu',
-      TRANSPORT: 'http',
+      TRANSPORT: 'https',
       HTTP_METHOD: 'post',
     },
     enswitch: {

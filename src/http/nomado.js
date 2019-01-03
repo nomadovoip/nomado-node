@@ -20,12 +20,17 @@ class Nomado extends HttpClient {
   prepareAuthHeader(config = {}) {
     switch (config.AUTH_TYPE) {
       case 'JWT' :
-        return `JWT ${config.JWT}`;
+        this.AUTH_HEADER = `JWT ${config.JWT}`;
+        break;
       case 'BASIC' :
-        return `BASIC ${config.B64}`;
+        this.AUTH_HEADER = `BASIC ${config.B64}`;
+        break;
       case 'TOKEN' :
-        return `BEARER ${config.TOKEN}`;
+        this.AUTH_HEADER = `BEARER ${config.TOKEN}`;
+        break;
     }
+
+    console.log(this.AUTH_HEADER)
 
     // Add authentication header to axios
     this.axios.interceptors.request.use(
@@ -34,6 +39,24 @@ class Nomado extends HttpClient {
         return config;
       }
     );
+  }
+
+  /**
+   * Call the api
+   * We pass the data in the request body
+   * @param endpoint
+   * @param data
+   * @returns {Promise<*>}
+   * @private
+   */
+  async _CALL(endpoint = '', data = {}) {
+    let result = await this.axios({
+      method: this.HTTP_METHOD,
+      url: endpoint,
+      data: data,
+    });
+
+    return result;
   }
 }
 

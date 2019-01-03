@@ -29,15 +29,12 @@ class Hlr extends ApiAdapter {
    * @param options
    */
   validate(data = {}) {
-    const endpoint = 'hlr/validate';
+    const endpoint = 'hlr/validate/';
 
-    const requiredParams = ['numbers'];
+    const requiredParams = ['number'];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
 
-    // 'numbers' param needs to be an array of numbers
-    data.numbers = _.castArray(data.numbers);
-
-    return this._call(endpoint, data);
+    return this._call(endpoint + data.number);
   }
 };
 

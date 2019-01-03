@@ -44,8 +44,8 @@ class InterfaceBuilder {
 
   get sms() {
     if (!this._sms) {
-      const customersAdapter = new SmsAdapter(this.httpClientBuilder.enswitch, this.authManager);
-      this._sms = new Sms(customersAdapter);
+      const smsAdapter = new SmsAdapter(this.httpClientBuilder.nomado);
+      this._sms = new Sms(smsAdapter);
     }
 
     return this._sms;
@@ -53,8 +53,8 @@ class InterfaceBuilder {
 
   get hlr() {
     if (!this._hlr) {
-      const customersAdapter = new HlrAdapter(this.httpClientBuilder.nomado, this.authManager);
-      this._hlr = new Hlr(customersAdapter);
+      const hlrsAdapter = new HlrAdapter(this.httpClientBuilder.nomado);
+      this._hlr = new Hlr(hlrsAdapter);
     }
 
     return this._hlr;

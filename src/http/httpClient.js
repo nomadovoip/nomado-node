@@ -9,19 +9,6 @@ class HttpClient {
       baseURL: this.SERVER_URL,
     });
   }
-
-  /**
-   *  CALL THE API
-   */
-  async _CALL(endpoint = '', data = {}) {
-    let result = await this.axios({
-      method: this.HTTP_METHOD,
-      url: endpoint,
-      params: data,
-    });
-
-    return result.data;
-  }
 }
 
 module.exports = HttpClient;
