@@ -9,15 +9,17 @@ describe('NomadoClient', () => {
   });
 
   it('should generate a valid BEARER auth header', () => {
-    var path = new Nomado().prepareAuthHeader({ AUTH_TYPE: 'TOKEN', TOKEN: '12345' });
-    expect(path).toBe('BEARER 12345');
+    const nomado = new Nomado();
+    nomado.prepareAuthHeader({ AUTH_TYPE: 'TOKEN', TOKEN: '12345' });
+    expect(nomado.AUTH_HEADER).toBe('BEARER 12345');
   });
 
   it('should generate a valid BASIC auth header', () => {
-    var header = new Nomado().prepareAuthHeader({
+    const nomado = new Nomado();
+    nomado.prepareAuthHeader({
       AUTH_TYPE: 'BASIC',
       B64: 'username:pass',
     });
-    expect(header).toBe('BASIC username:pass');
+    expect(nomado.AUTH_HEADER).toBe('BASIC username:pass');
   });
 });

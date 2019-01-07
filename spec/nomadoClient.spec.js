@@ -20,13 +20,13 @@ describe('NomadoClient', () => {
     expect(nomadoClient.account).toEqual(jasmine.any(Account));
   });
 
-  xit('should build a Sms object', () => {
+  it('should build a Sms object', () => {
     let credentials1 = { USERNAME: 'user1', PASSWORD: 'pass2' };
     const nomadoClient = new NomadoClientSpec(credentials1);
     expect(nomadoClient.sms).toEqual(jasmine.any(Sms));
   });
 
-  xit('should build a HLR object', () => {
+  it('should build a HLR object', () => {
     let credentials1 = { USERNAME: 'user1', PASSWORD: 'pass2' };
     const nomadoClient = new NomadoClientSpec(credentials1);
     expect(nomadoClient.hlr).toEqual(jasmine.any(HLR));

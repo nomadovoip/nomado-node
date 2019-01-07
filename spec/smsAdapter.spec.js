@@ -1,7 +1,7 @@
 /* eslint-env jasmine */
 
 const SmsAdapter = require('../src/adapters/sms');
-const smsResponse = require('./data/smsSuccess.json');
+const smsResponse = require('./data/genericSuccess.json');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
 const HttpClientBuilder = require('../src/core/httpClientBuilder');
 

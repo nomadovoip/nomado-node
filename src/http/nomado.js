@@ -30,8 +30,6 @@ class Nomado extends HttpClient {
         break;
     }
 
-    console.log(this.AUTH_HEADER)
-
     // Add authentication header to axios
     this.axios.interceptors.request.use(
       config => {
