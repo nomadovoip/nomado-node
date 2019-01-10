@@ -17,7 +17,6 @@ describe('Sms Interface', () => {
     spyOn(sms.api.httpClient, '_CALL').and.returnValue(smsResponse);
     const smsConfig = {
       to: '0123456789',
-      from: '1234567890',
       message: 'test',
       unicode: false,
     };

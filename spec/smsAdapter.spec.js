@@ -8,7 +8,7 @@ const HttpClientBuilder = require('../src/core/httpClientBuilder');
 describe('SmsAdapter', () => {
   beforeAll(() => {
     this.httpClientBuilder = new HttpClientBuilder({ USERNAME: 'user', PASSWORD: 'pass' });
-    this.apiAdapter = new SmsAdapter(this.httpClientBuilder.enswitch);
+    this.apiAdapter = new SmsAdapter(this.httpClientBuilder.nomado);
   });
 
   it('should return a successful NomadoResponse with code 200', async () => {

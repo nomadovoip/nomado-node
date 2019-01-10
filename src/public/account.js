@@ -11,8 +11,8 @@ class Account {
    * @param data (optionally contains account id)
    * @returns {Promise<NomadoResponse>}
    */
-  async getBalance(data = {}) {
-    return this.api.getBalance(data);
+  async getBalance(options = {}) {
+    return this.api.getBalance(options);
   }
 }
 
