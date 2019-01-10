@@ -10,6 +10,8 @@ const Hlr = require('../public/hlr');
 const HttpClientBuilder = require('../core/httpClientBuilder');
 const Credentials = require('../utils/credentials');
 const AuthManager = require('./authManager');
+const Otp = require('../public/otp');
+const OtpAdapter = require('../adapters/otp');
 
 /**
  * Builds public interfaces
@@ -58,6 +60,15 @@ class InterfaceBuilder {
     }
 
     return this._hlr;
+  }
+
+  get otp() {
+    if (!this._otp) {
+      const otpAdapter = new OtpAdapter(this.httpClientBuilder.nomado);
+      this._otp = new Otp(otpAdapter);
+    }
+
+    return this._otp;
   }
 };
 
