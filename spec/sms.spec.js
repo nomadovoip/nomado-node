@@ -3,7 +3,7 @@
 const NomadoClient = require('../');
 const Sms = require('../src/public/sms');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
-const smsResponse = require('./data/genericSuccess.json');
+const smsResponse = require('./data/nomadoSuccess.json');
 
 describe('Sms Interface', () => {
   it('should create an instance of SMS', () => {

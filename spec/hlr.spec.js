@@ -3,7 +3,7 @@
 const NomadoClient = require('../');
 const Hlr = require('../src/public/hlr');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
-const genericResponse = require('./data/genericSuccess.json');
+const genericResponse = require('./data/nomadoSuccess.json');
 
 describe('HLR Interface', () => {
   it('should create an instance of HLR', () => {
