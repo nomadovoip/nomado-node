@@ -1,4 +1,4 @@
-const { EnswitchResponse, HttpError } = require('../utils/responses');
+const { HttpError } = require('../utils/responses');
 
 /**
  * An adapter for the Enswitch Calls API
@@ -28,21 +28,14 @@ class Api {
    * @private
    */
   async _call(endpoint, data = {}) {
-    let responses;
-    let responseData;
     try {
       // Wait for http response
-      const httpResponse = await this.httpClient._CALL(endpoint, data);
-      responseData = httpResponse.data || null;
-      responses = httpResponse.responses || null;
+      return await this.httpClient.call(endpoint, data);
     }
     catch (e) {
       // Http client error occured
       return HttpError.buildResponse(e);
     }
-
-    // Return a NomadoResponse
-    return EnswitchResponse.buildResponse(responses, responseData);
   }
 };
 

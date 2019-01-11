@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const HttpClient = require('./httpClient');
+const { EnswitchResponse } = require('../utils/responses');
 
 class Enswitch extends HttpClient {
   constructor(config = {}) {
@@ -35,6 +36,20 @@ class Enswitch extends HttpClient {
     });
 
     return result.data;
+  }
+
+  /**
+   * Call the API and return a formatted response
+   * @param endpoint
+   * @param data
+   * @returns {NomadoResponse}
+   */
+  async call(endpoint = '', data = {}) {
+    const httpResponse = await this._CALL(endpoint, data);
+    let responses = httpResponse.responses || null;
+    let responseData = httpResponse.data || null;
+
+    return EnswitchResponse.buildResponse(responses, responseData);
   }
 }
 
