@@ -103,7 +103,8 @@ Every call will return a promise that will be resolved (or rejected) with a
 
 ### SMS
 
-#####Send
+**Send**
+
 Send a SMS to one or multiple numbers.
 ````javascript
 nomado.sms.send({
@@ -128,10 +129,10 @@ nomado.sms.send({
 ````
 If you are sending unicode SMS, don't forget to turn on the `unicode` flag.
     
-###OTP
+### OTP
 Sending 2FA code via SMS to your users without the hassle.
 
-#####Send
+**Send**
 ````javascript
 nomado.otp.send({
   number: '3245678901', // e164 formatted number
@@ -140,7 +141,8 @@ nomado.otp.send({
 ````
 In the template, `{{code}}` will be replaced by the generated 2FA code. 
 
-#####Verify
+**Verify**
+
 Let's check the code entered by your user.
 ````javascript
 nomado.otp.verify({
@@ -149,8 +151,9 @@ nomado.otp.verify({
 })
 ````
 
-###Calls
-#####Make
+### Calls
+**Make**
+
 Makes a call to a telephone line or number. When it answers, makes a second call to a number, bridging both calls together.
 ````javascript
 nomado.calls.make({
@@ -164,9 +167,10 @@ nomado.calls.make({
 }
 ````
 
-###HLR
+### HLR
 Make HLR queries to any mobile number.
-#####Fetch
+
+**Fetch**
 ````javascript
 nomado.hlr.fetch({
   numbers: ['3245678901','3245678902'], // e164 formatted numbers
@@ -183,7 +187,8 @@ nomado.hlr.fetch({
   cost: 0.05, 
 }
 ````
-#####Validate
+**Validate**
+
 Free query to validate mobile phone numbers and get short information
 ````javascript
 nomado.hlr.validate({
@@ -201,9 +206,10 @@ nomado.hlr.validate({
 }
 ````
 
-###Account
+### Account
 Easy way to check your current balance
-#####Get balance
+
+**Get balance**
 ````javascript
 nomado.account.getBalance();
 
