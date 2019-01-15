@@ -127,7 +127,7 @@ nomado.sms.send({
   total_sms: 2,
 }
 ````
-If you are sending unicode SMS, don't forget to turn on the `unicode` flag.
+If you are sending unicode SMS, don't forget to turn on the `unicode` flag, otherwise encoding problems  may occur.
     
 ### OTP
 Sending 2FA code via SMS to your users without the hassle.
@@ -136,10 +136,13 @@ Sending 2FA code via SMS to your users without the hassle.
 ````javascript
 nomado.otp.send({
   number: '3245678901', // e164 formatted number
-  template: 'Your verification code is {{code}}.'
+  template: 'Your verification code is {{CODE}}.',
+  type: 'ALPHANUMERIC', // optional, ALPHA, NUMERIC or ALPHANUMERIC (default)
+  length: 4, // optional, defaults to 4
+  expiry: 7200 // optional, defaults to 7200 seconds (2 hours)
 })
 ````
-In the template, `{{code}}` will be replaced by the generated 2FA code. 
+In the template, `{{CODE}}` will be replaced by the generated 2FA code. 
 
 **Verify**
 
@@ -147,9 +150,11 @@ Let's check the code entered by your user.
 ````javascript
 nomado.otp.verify({
   number: '3245678901', // their phone number,
-  code: '456789' // their code
+  token: '456789' // their code
 })
 ````
+
+Once the code has been verified, it becomes invalidated.
 
 ### Calls
 **Make**
