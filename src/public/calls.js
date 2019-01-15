@@ -8,11 +8,11 @@ class Calls {
 
   /**
    * Make a call
-   * @param config
+   * @param options
    * @returns {Promise<NomadoResponse>}
    */
-  make(config) {
-    return this.api.make(config);
+  make(options) {
+    return this.api.make(options);
   }
 }
 
