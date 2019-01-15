@@ -8,16 +8,16 @@ class Otp {
 
   /**
    * Send OTP via SMS
-   * @param options (number, template)
+   * @param options (to, template, length, expiry)
    * @returns {Promise<NomadoResponse>}
    */
-  async send(options = {}) {
-    return this.api.send(options);
+  async create(options = {}) {
+    return this.api.create(options);
   }
 
   /**
    * Verify OTP validity
-   * @param options (number, code)
+   * @param options (to, code)
    * @returns {Promise<NomadoResponse>}
    */
   async verify(options = {}) {

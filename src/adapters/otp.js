@@ -8,13 +8,13 @@ const Validator = require('../utils/validator');
 class Otp extends ApiAdapter {
   /**
    * Send OTP via SMS
-   * Required params : number
-   * @param options
+   * Required params : to
+   * @param options (template, length, expiry)
    */
-  send(data = {}) {
-    const endpoint = '2fa/send';
+  create(data = {}) {
+    const endpoint = '2fa/create';
 
-    const requiredParams = ['number'];
+    const requiredParams = ['to'];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
 
     return this._call(endpoint, data);
@@ -26,9 +26,9 @@ class Otp extends ApiAdapter {
    * @param options
    */
   verify(data = {}) {
-    const endpoint = '2fa/send';
+    const endpoint = '2fa/verify';
 
-    const requiredParams = ['number', 'code'];
+    const requiredParams = ['number', 'token'];
     Validator.validateRequiredParams(requiredParams, data, endpoint);
 
     return this._call(endpoint, data);
