@@ -16,7 +16,7 @@ class Validator {
 
     if (missingParams.length > 0) {
       const message = `Some required options are missing in ${call} : ${missingParams.join(', ')}.`;
-      throw new NomadoResponse({ code: '400', reason: message });
+      throw new NomadoResponse({ success: false, code: '400', reason: message });
     }
 
     return true;
@@ -24,7 +24,7 @@ class Validator {
 
   static invalidAPIResponse(requiredItems, call) {
     const message = `Some expected data is missing in the response from '${call}' : ${requiredItems.join(', ')}.`;
-    return new NomadoResponse({ code: '400', reason: message });
+    return new NomadoResponse({ success: false, code: '400', reason: message });
   }
 };
 

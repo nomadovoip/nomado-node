@@ -3,7 +3,7 @@
 const NomadoClient = require('../');
 const Sms = require('../src/public/sms');
 const NomadoResponse = require('../src/utils/responses').NomadoResponse;
-const smsResponse = require('./data/genericSuccess.json');
+const smsResponse = require('./data/nomadoSuccess.json');
 
 describe('Sms Interface', () => {
   it('should create an instance of SMS', () => {
@@ -17,7 +17,6 @@ describe('Sms Interface', () => {
     spyOn(sms.api.httpClient, '_CALL').and.returnValue(smsResponse);
     const smsConfig = {
       to: '0123456789',
-      from: '1234567890',
       message: 'test',
       unicode: false,
     };

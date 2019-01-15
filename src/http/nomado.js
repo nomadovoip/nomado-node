@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const HttpClient = require('./httpClient');
+const { NomadoResponse } = require('../utils/responses');
 
 class Nomado extends HttpClient {
   constructor(config = {}) {
@@ -55,6 +56,19 @@ class Nomado extends HttpClient {
     });
 
     return result;
+  }
+
+  /**
+   * Call the API and return a formatted response
+   * @param endpoint
+   * @param data
+   * @returns {NomadoResponse}
+   */
+  async call(endpoint = '', data = {}) {
+    const httpResponse = await this._CALL(endpoint, data);
+    httpResponse.success = true;
+    httpResponse.code = httpResponse.code || httpResponse.status;
+    return new NomadoResponse(httpResponse);
   }
 }
 

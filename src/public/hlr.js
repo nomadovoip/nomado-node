@@ -8,20 +8,20 @@ class Hlr {
 
   /**
    * Get HLR
-   * @param numbers[]
+   * @param options (numbers[])
    * @returns {Promise<NomadoResponse>}
    */
-  async fetch(data = {}) {
-    return this.api.fetch(data);
+  async fetch(options = {}) {
+    return this.api.fetch(options);
   }
 
   /**
    * Validate HLR
-   * @param numbers[]
+   * @param options (number)
    * @returns {Promise<NomadoResponse>}
    */
-  async validate(data = {}) {
-    return this.api.validate(data);
+  async validate(options = {}) {
+    return this.api.validate(options);
   }
 }
 
