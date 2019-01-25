@@ -152,6 +152,14 @@ nomado.otp.verify({
   number: '3245678901', // their phone number,
   token: '456789' // their code
 })
+
+// expected response
+{
+  code: 200,
+  data: {
+    verify: true
+  }
+}
 ````
 
 Once the code has been verified, it becomes invalidated.
