@@ -1,4 +1,4 @@
-![Nomado Logo](./assets/nomado-logo.png)
+![Nomado Logo](https://www.nomado.eu/nom_website/static/img/nomado-logo.png)
 # NodeJS SDK for the Nomado API
 <div>
   <h3>
@@ -152,6 +152,14 @@ nomado.otp.verify({
   number: '3245678901', // their phone number,
   token: '456789' // their code
 })
+
+// expected response
+{
+  code: 200,
+  data: {
+    verify: true
+  }
+}
 ````
 
 Once the code has been verified, it becomes invalidated.

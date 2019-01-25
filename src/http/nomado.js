@@ -55,7 +55,7 @@ class Nomado extends HttpClient {
       data: data,
     });
 
-    return result;
+    return result.data;
   }
 
   /**
@@ -67,7 +67,6 @@ class Nomado extends HttpClient {
   async call(endpoint = '', data = {}) {
     const httpResponse = await this._CALL(endpoint, data);
     httpResponse.success = true;
-    httpResponse.code = httpResponse.code || httpResponse.status;
     return new NomadoResponse(httpResponse);
   }
 }
