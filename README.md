@@ -1,4 +1,4 @@
-![Nomado Logo](./assets/nomado-logo.png)
+![Nomado Logo](https://www.nomado.eu/nom_website/static/img/nomado-logo.png)
 # NodeJS SDK for the Nomado API
 <div>
   <h3>
