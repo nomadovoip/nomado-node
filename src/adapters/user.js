@@ -7,7 +7,7 @@ class User extends ApiAdapter {
 
   /**
    * Fetch user data
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   login () {
     const endpoint = 'user/login';

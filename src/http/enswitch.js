@@ -42,7 +42,7 @@ class Enswitch extends HttpClient {
    * Call the API and return a formatted response
    * @param endpoint
    * @param data
-   * @returns {NomadoResponse}
+   * @returns {nomadoResponse}
    */
   async call(endpoint = '', data = {}) {
     const httpResponse = await this._CALL(endpoint, data);

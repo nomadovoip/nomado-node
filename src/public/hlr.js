@@ -9,7 +9,7 @@ class Hlr {
   /**
    * Get HLR
    * @param options (numbers[])
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async fetch(options = {}) {
     return this.api.fetch(options);
@@ -18,7 +18,7 @@ class Hlr {
   /**
    * Validate HLR
    * @param options (number)
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async validate(options = {}) {
     return this.api.validate(options);

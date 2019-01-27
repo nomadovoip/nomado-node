@@ -9,7 +9,7 @@ class Calls {
   /**
    * Make a call
    * @param options
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   make(options) {
     return this.api.make(options);

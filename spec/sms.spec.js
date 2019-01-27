@@ -1,18 +1,18 @@
 /* eslint-env jasmine */
 
-const NomadoClient = require('../');
+const nomadoClient = require('../');
 const Sms = require('../src/public/sms');
-const NomadoResponse = require('../src/utils/responses').NomadoResponse;
+const nomadoResponse = require('../src/utils/responses').nomadoResponse;
 const smsResponse = require('./data/nomadoSuccess.json');
 
 describe('Sms Interface', () => {
   it('should create an instance of SMS', () => {
-    const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+    const nomado = new nomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     expect(nomado.sms instanceof Sms).toBe(true);
   });
 
-  it('should return a NomadoResponse', async () => {
-    const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+  it('should return a nomadoResponse', async () => {
+    const nomado = new nomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     const sms = nomado.sms;
     spyOn(sms.api.httpClient, '_CALL').and.returnValue(smsResponse);
     const smsConfig = {
@@ -23,6 +23,6 @@ describe('Sms Interface', () => {
 
     let response = await sms.send(smsConfig);
 
-    expect(response instanceof NomadoResponse).toBe(true);
+    expect(response instanceof nomadoResponse).toBe(true);
   });
 });

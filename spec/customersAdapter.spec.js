@@ -4,7 +4,7 @@ const CustomersAdapter = require('../src/adapters/customers');
 const UserAdapter = require('../src/adapters/user');
 const customerResponse = require('./data/customerSuccess.json');
 const userResponse = require('./data/userSuccess.json');
-const NomadoResponse = require('../src/utils/responses').NomadoResponse;
+const nomadoResponse = require('../src/utils/responses').nomadoResponse;
 const HttpClientBuilder = require('../src/core/httpClientBuilder');
 const AuthManager = require('../src/core/authManager');
 
@@ -16,12 +16,12 @@ describe('CustomersAdapter', () => {
     this.authManager = new AuthManager(userAdapter, credentials);
   });
 
-  it('should return a successful NomadoResponse with code 200', async () => {
+  it('should return a successful nomadoResponse with code 200', async () => {
     const adapter = new CustomersAdapter(this.httpClientBuilder.enswitch, this.authManager);
     spyOn(adapter.authManager.api.httpClient, '_CALL').and.returnValue(userResponse);
 
     let response = await adapter.getBalance();
-    expect(response instanceof NomadoResponse).toBe(true);
+    expect(response instanceof nomadoResponse).toBe(true);
     expect(response.code).toBe('200');
   });
 });

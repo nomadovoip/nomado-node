@@ -9,7 +9,7 @@ class Otp {
   /**
    * Send OTP via SMS
    * @param options (to, template, length, expiry)
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async create(options = {}) {
     return this.api.create(options);
@@ -18,7 +18,7 @@ class Otp {
   /**
    * Verify OTP validity
    * @param options (to, code)
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async verify(options = {}) {
     return this.api.verify(options);

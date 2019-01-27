@@ -1,5 +1,5 @@
 const Enswitch = require('../http/enswitch');
-const Nomado = require('../http/nomado');
+const nomado = require('../http/nomado');
 const Config = require('../config/config');
 
 /**
@@ -12,7 +12,7 @@ class HttpClientBuilder {
 
   get nomado() {
     const config = { ...Config.api.nomado, ...this._credentials };
-    this._nomadoClient = this._nomadoClient || new Nomado(config);
+    this._nomadoClient = this._nomadoClient || new nomado(config);
     return this._nomadoClient;
   }
 

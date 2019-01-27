@@ -57,7 +57,7 @@ const Credentials = {
   },
 
   /**
-   * Base64 encode username and password for Nomado API
+   * Base64 encode username and password for nomado API
    * @param credentials
    * @private
    */

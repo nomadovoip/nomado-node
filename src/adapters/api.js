@@ -21,10 +21,10 @@ class Api {
   }
 
   /**
-   * Execute the API call and return a NomadoResponse
+   * Execute the API call and return a nomadoResponse
    * @param endpoint
    * @param data
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    * @private
    */
   async _call(endpoint, data = {}) {

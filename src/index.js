@@ -1,8 +1,8 @@
 const InterfaceBuilder = require('./core/interfaceBuilder');
 /**
- * The Nomado SDK client which exposes public interfaces
+ * The nomado SDK client which exposes public interfaces
  */
-class NomadoClient {
+class nomadoClient {
   constructor(authConfig = {}) {
     const publicInterface = new InterfaceBuilder(authConfig);
     this.calls = publicInterface.calls;
@@ -13,4 +13,4 @@ class NomadoClient {
   }
 };
 
-module.exports = NomadoClient;
+module.exports = nomadoClient;

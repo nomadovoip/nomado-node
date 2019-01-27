@@ -1,5 +1,5 @@
-![Nomado Logo](https://www.nomado.eu/nom_website/static/img/nomado-logo.png)
-# NodeJS SDK for the Nomado API
+![nomado Logo](https://www.nomado.eu/nom_website/static/img/nomado-logo.png)
+# NodeJS SDK for the nomado API
 <div>
   <h3>
     <a href="https://www.nomado.eu">
@@ -21,10 +21,10 @@
 </div>
 
 ## Introduction
-Nomado is a telephony and SMS solution for businesses and private customers.  
-Our goal is to provide super user-friendly tools to meet your growing needs of nomadism.  
-  
-This package provides a client to access the Nomado API.
+nomado is a telephony and SMS solution for businesses and private customers.
+Our goal is to provide super user-friendly tools to meet your growing needs of nomadism.
+
+This package provides a client to access the nomado API.
 
 ## Table of Contents
 
@@ -47,12 +47,12 @@ npm install nomado
 Below is a quick example for initializing the library and **sending a SMS**.
 
 ```javascript
-const NomadoClient = require('nomado');
+const nomadoClient = require('nomado');
 
 const USERNAME = 'username';
 const PASSWORD = 'password';
 
-const nomado = new NomadoClient({USERNAME, PASSWORD});
+const nomado = new nomadoClient({USERNAME, PASSWORD});
 
 const smsOptions = {
   to: ['3245678901'],
@@ -72,7 +72,7 @@ nomado.sms.send(smsOptions)
 ```
 
 ## Documentation
-The `NomadoClient` class provides the public interfaces to access the Nomado API 
+The `nomadoClient` class provides the public interfaces to access the nomado API
 * `SMS`
 * `OTP`
 * `Calls`
@@ -80,16 +80,16 @@ The `NomadoClient` class provides the public interfaces to access the Nomado API
 * `Account`
 
 ### Authentication
-First, initialize the library with your Nomado credentials.
+First, initialize the library with your nomado credentials.
 ````javascript
-const nomado = new NomadoClient({USERNAME, PASSWORD});
+const nomado = new nomadoClient({USERNAME, PASSWORD});
 ````
 
 Now, you can start sending requests to the API.
 
 ### Responses
-Every call will return a promise that will be resolved (or rejected) with a 
-`NomadoResponse` object wrapping the API response code and the data.  
+Every call will return a promise that will be resolved (or rejected) with a
+`nomadoResponse` object wrapping the API response code and the data.
 
 ````javascript
 // Result object:
@@ -116,7 +116,7 @@ nomado.sms.send({
 // example response
 {
   code: 200,
-  data: { 
+  data: {
     callerID: 'NOMADO',
     text: 'Bonjour le monde',
     unicode: 0,
@@ -128,7 +128,7 @@ nomado.sms.send({
 }
 ````
 If you are sending unicode SMS, don't forget to turn on the `unicode` flag, otherwise encoding problems  may occur.
-    
+
 ### OTP
 Sending 2FA code via SMS to your users without the hassle.
 
@@ -142,7 +142,7 @@ nomado.otp.send({
   expiry: 7200 // optional, defaults to 7200 seconds (2 hours)
 })
 ````
-In the template, `{{CODE}}` will be replaced by the generated 2FA code. 
+In the template, `{{CODE}}` will be replaced by the generated 2FA code.
 
 **Verify**
 
@@ -192,12 +192,12 @@ nomado.hlr.fetch({
 // example response
 {
   code: 200,
-  data: { 
-    '3245678901': { ... }, 
-    '3245678902': { ... }, 
+  data: {
+    '3245678901': { ... },
+    '3245678902': { ... },
     valid_numbers: 2
   },
-  cost: 0.05, 
+  cost: 0.05,
 }
 ````
 **Validate**
@@ -212,8 +212,8 @@ nomado.hlr.validate({
 {
   code: 200,
   data: {
-     Status: 'Valid', 
-     Region: 'BE', 
+     Status: 'Valid',
+     Region: 'BE',
      ...
   }
 }
@@ -237,11 +237,11 @@ nomado.account.getBalance();
 
 
 ## Contributing
-You are welcome to contribute in several ways like creating new features, fixing bugs, improving documentation, translating etc...  
+You are welcome to contribute in several ways like creating new features, fixing bugs, improving documentation, translating etc...
 [More information in CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Support
-We are a small team dedicated to offer you the best support because we want to satisfy you.  
+We are a small team dedicated to offer you the best support because we want to satisfy you.
 For any problem or question, feel free to [contact us](https://www.nomado.eu/page/contact-call-support-nomado).
 
 ## Contributors

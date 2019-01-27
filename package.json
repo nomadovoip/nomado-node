@@ -1,7 +1,7 @@
 {
   "name": "nomado",
   "version": "1.0.4",
-  "description": "Nomado Client SDK for making calls and sending SMS",
+  "description": "nomado Client SDK for making calls and sending SMS",
   "keywords": [
     "voip",
     "nomado",
@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jasmine"
   },
-  "author": "Nomado Telecom SPRL <developer@nomado.eu>",
+  "author": "nomado Telecom SPRL <developer@nomado.eu>",
   "license": "MIT",
   "dependencies": {
     "axios": "0.18.0",

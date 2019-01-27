@@ -1,18 +1,18 @@
 /* eslint-env jasmine */
 
-const NomadoClient = require('../');
+const nomadoClient = require('../');
 const Hlr = require('../src/public/hlr');
-const NomadoResponse = require('../src/utils/responses').NomadoResponse;
+const nomadoResponse = require('../src/utils/responses').nomadoResponse;
 const genericResponse = require('./data/nomadoSuccess.json');
 
 describe('HLR Interface', () => {
   it('should create an instance of HLR', () => {
-    const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+    const nomado = new nomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     expect(nomado.hlr instanceof Hlr).toBe(true);
   });
 
-  it('should call validate and return a NomadoResponse', async () => {
-    const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+  it('should call validate and return a nomadoResponse', async () => {
+    const nomado = new nomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     const hlr = nomado.hlr;
     spyOn(hlr.api.httpClient, '_CALL').and.returnValue(genericResponse);
     const hlrConfig = {
@@ -21,11 +21,11 @@ describe('HLR Interface', () => {
 
     let response = await hlr.validate(hlrConfig);
 
-    expect(response instanceof NomadoResponse).toBe(true);
+    expect(response instanceof nomadoResponse).toBe(true);
   });
 
-  it('should call fetch and return a NomadoResponse', async () => {
-    const nomado = new NomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
+  it('should call fetch and return a nomadoResponse', async () => {
+    const nomado = new nomadoClient({ USERNAME: 'user', PASSWORD: 'pass' });
     const hlr = nomado.hlr;
     spyOn(hlr.api.httpClient, '_CALL').and.returnValue(genericResponse);
     const hlrConfig = {
@@ -34,6 +34,6 @@ describe('HLR Interface', () => {
 
     let response = await hlr.fetch(hlrConfig);
 
-    expect(response instanceof NomadoResponse).toBe(true);
+    expect(response instanceof nomadoResponse).toBe(true);
   });
 });
