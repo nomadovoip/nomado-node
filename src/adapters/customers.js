@@ -10,7 +10,7 @@ class Customers extends ApiAdapter {
    * Fetch account current balance
    * Optional params : id (account id)
    * @param data
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async getBalance(data = {}) {
     const endpoint = 'customers/get';

@@ -1,7 +1,7 @@
 /* eslint-env jasmine */
 
 const HttpClientBuilder = require('../src/core/httpClientBuilder');
-const Nomado = require('../src/http/nomado');
+const nomado = require('../src/http/nomado');
 const Enswitch = require('../src/http/enswitch');
 
 describe('HttpClientBuilder', () => {
@@ -10,9 +10,9 @@ describe('HttpClientBuilder', () => {
     this.httpClientBuilder = new HttpClientBuilder(credentials);
   });
 
-  it('should generate a Nomado object', () => {
+  it('should generate a nomado object', () => {
     var nomadoClient = this.httpClientBuilder.nomado;
-    expect(nomadoClient).toEqual(jasmine.any(Nomado));
+    expect(nomadoClient).toEqual(jasmine.any(nomado));
   });
 
   it('should generate build a Enswitch object', () => {
@@ -20,7 +20,7 @@ describe('HttpClientBuilder', () => {
     expect(enswitchClient).toEqual(jasmine.any(Enswitch));
   });
 
-  it('should return the same Nomado object', () => {
+  it('should return the same nomado object', () => {
     var nomado1 = this.httpClientBuilder.nomado;
     var nomado2 = this.httpClientBuilder.nomado;
     expect(nomado1).toBe(nomado2);

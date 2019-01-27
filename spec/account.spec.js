@@ -1,7 +1,7 @@
 /* eslint-env jasmine */
 
 // const auth = require('../src/service/auth');
-const NomadoClient = require('../');
+const nomadoClient = require('../');
 const Account = require('../src/public/account');
 const CustomersAdapter = require('../src/adapters/customers');
 const UserAdapter = require('../src/adapters/user');
@@ -11,7 +11,7 @@ const HttpClientBuilder = require('../src/core/httpClientBuilder');
 describe('Account Interface', () => {
   beforeAll(() => {
     let credentials = { USERNAME: 'user', PASSWORD: 'pass' };
-    this.nomado = new NomadoClient(credentials);
+    this.nomado = new nomadoClient(credentials);
     spyOn(this.nomado.account.api.authManager.api.httpClient, '_CALL').and.returnValue(userResponse);
 
     this.httpClientBuilder = new HttpClientBuilder(credentials);

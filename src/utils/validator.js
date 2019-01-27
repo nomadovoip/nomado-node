@@ -1,12 +1,12 @@
 const _ = require('lodash');
-const { NomadoResponse } = require('./responses');
+const { nomadoResponse } = require('./responses');
 
 /**
  * A utility class which performs objects validation
  */
 class Validator {
   /**
-   * Throws a NomadoResponse with code 400 in case of missing parameters in supplied options
+   * Throws a nomadoResponse with code 400 in case of missing parameters in supplied options
    * @param requiredParams
    * @param options
    * @param call
@@ -16,7 +16,7 @@ class Validator {
 
     if (missingParams.length > 0) {
       const message = `Some required options are missing in ${call} : ${missingParams.join(', ')}.`;
-      throw new NomadoResponse({ success: false, code: '400', reason: message });
+      throw new nomadoResponse({ success: false, code: '400', reason: message });
     }
 
     return true;
@@ -24,7 +24,7 @@ class Validator {
 
   static invalidAPIResponse(requiredItems, call) {
     const message = `Some expected data is missing in the response from '${call}' : ${requiredItems.join(', ')}.`;
-    return new NomadoResponse({ success: false, code: '400', reason: message });
+    return new nomadoResponse({ success: false, code: '400', reason: message });
   }
 };
 

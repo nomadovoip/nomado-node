@@ -1,10 +1,10 @@
 /* eslint-env jasmine */
 
-const { NomadoResponse } = require('../src/utils/responses');
+const { nomadoResponse } = require('../src/utils/responses');
 const Validator = require('../src/utils/validator');
 
 describe('Validator', () => {
-  it('should throw a NomadoResponse when a parameter is missing', () => {
+  it('should throw a nomadoResponse when a parameter is missing', () => {
     const requiredParams = ['param1', 'param2'];
     const options = { param1: 'value', param3: 'value3' };
 

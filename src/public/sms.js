@@ -9,7 +9,7 @@ class Sms {
   /**
    * Send SMS
    * @param options (to,from,message,unicode)
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async send(options = {}) {
     return this.api.send(options);

@@ -3,7 +3,7 @@ const _ = require('lodash');
 /**
  * Default formatted response
  */
-class NomadoResponse {
+class nomadoResponse {
   constructor({ success, code, reason = '', data = {} }) {
     this.success = success;
     this.code = code;
@@ -12,15 +12,15 @@ class NomadoResponse {
   }
 }
 
-class NomadoError extends NomadoResponse {}
+class nomadoError extends nomadoResponse {}
 
 /**
  * Wrapper for HTTP requests errors coming from the Axios library
  */
 class HttpError {
-  // Parse the exception coming from Axios and return a formatted NomadoResponse
+  // Parse the exception coming from Axios and return a formatted nomadoResponse
   static buildResponse(error) {
-    if (error instanceof NomadoError) {
+    if (error instanceof nomadoError) {
       return error;
     }
 
@@ -50,7 +50,7 @@ class HttpError {
 
     formattedError.success = false;
 
-    return new NomadoError(formattedError);
+    return new nomadoError(formattedError);
   }
 };
 
@@ -61,7 +61,7 @@ class HttpError {
  * - and one "data" Object
  */
 class EnswitchResponse {
-  // Parse the response coming from the Enswitch API and return a formatted NomadoResponse
+  // Parse the response coming from the Enswitch API and return a formatted nomadoResponse
   static buildResponse(responses, responseData) {
     // Take the first object from responses array
     const firstResponse = _.isArray(responses) ? responses[0] || {} : {};
@@ -73,8 +73,8 @@ class EnswitchResponse {
       data: responseData || {},
     };
 
-    return new NomadoResponse(formattedResponse);
+    return new nomadoResponse(formattedResponse);
   }
 };
 
-module.exports = { NomadoResponse, HttpError, EnswitchResponse };
+module.exports = { nomadoResponse, HttpError, EnswitchResponse };

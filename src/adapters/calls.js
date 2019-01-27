@@ -9,7 +9,7 @@ class Calls extends ApiAdapter {
    * Make a call
    * Required params : cnumber, snumber
    * @param data
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   make(data = {}) {
     const endpoint = 'calls/make';

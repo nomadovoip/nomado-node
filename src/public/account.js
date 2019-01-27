@@ -9,7 +9,7 @@ class Account {
   /**
    * Get the account balance
    * @param data (optionally contains account id)
-   * @returns {Promise<NomadoResponse>}
+   * @returns {Promise<nomadoResponse>}
    */
   async getBalance(options = {}) {
     return this.api.getBalance(options);
