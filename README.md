@@ -136,7 +136,7 @@ Sending 2FA code via SMS to your users without the hassle.
 **Send**
 ````javascript
 nomado.otp.send({
-  number: '3245678901', // e164 formatted number
+  to: '3245678901', // e164 formatted number
   template: 'Your verification code is {{CODE}}.',
   type: 'ALPHANUMERIC', // optional, ALPHA, NUMERIC or ALPHANUMERIC (default)
   length: 4, // optional, defaults to 4
