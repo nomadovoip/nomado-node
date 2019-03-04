@@ -1,4 +1,4 @@
-![nomado Logo](https://www.nomado.eu/nom_website/static/img/nomado-logo.png)
+![nomado Logo](https://my.nomado.eu/join/public/images/nomado-logo.png)
 # NodeJS SDK for the nomado API
 <div>
   <h3>
@@ -6,11 +6,11 @@
       Website
     </a>
     <span> | </span>
-    <a href="https://www.nomado.eu/page/contact-call-support-nomado">
+    <a href="https://odoo.nomado.eu/page/contact-call-support-nomado">
       Support
     </a>
     <span> | </span>
-    <a href="https://www.nomado.eu/page/website.contactus">
+    <a href="https://odoo.nomado.eu/page/website.contactus">
       Contact
     </a>
     <span> | </span>
@@ -43,6 +43,7 @@ npm install nomado
 ```
 
 ## Quickstart
+You should first get a free nomado account on [my.nomado.eu/join](https://my.nomado.eu/join).
 
 Below is a quick example for initializing the library and **sending a SMS**.
 
@@ -135,7 +136,7 @@ Sending 2FA code via SMS to your users without the hassle.
 **Send**
 ````javascript
 nomado.otp.send({
-  number: '3245678901', // e164 formatted number
+  to: '3245678901', // e164 formatted number
   template: 'Your verification code is {{CODE}}.',
   type: 'ALPHANUMERIC', // optional, ALPHA, NUMERIC or ALPHANUMERIC (default)
   length: 4, // optional, defaults to 4
@@ -242,7 +243,7 @@ You are welcome to contribute in several ways like creating new features, fixing
 
 ## Support
 We are a small team dedicated to offer you the best support because we want to satisfy you.
-For any problem or question, feel free to [contact us](https://www.nomado.eu/page/contact-call-support-nomado).
+For any problem or question, feel free to [contact us](https://odoo.nomado.eu/page/contact-call-support-nomado).
 
 ## Contributors
 - [Flavien Barsé](https://github.com/flavienb)

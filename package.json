@@ -1,6 +1,6 @@
 {
   "name": "nomado",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "nomado Client SDK for making calls and sending SMS",
   "keywords": [
     "voip",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "0.18.0",
-    "lodash": "4.17.10"
+    "lodash": "4.17.11"
   },
   "devDependencies": {
     "eslint": "4.19.1",
