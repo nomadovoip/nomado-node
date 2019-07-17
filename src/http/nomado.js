@@ -65,9 +65,7 @@ class nomado extends HttpClient {
    * @returns {nomadoResponse}
    */
   async call(endpoint = '', data = {}) {
-    const httpResponse = await this._CALL(endpoint, data);
-    httpResponse.success = true;
-    return new nomadoResponse(httpResponse);
+    return await this._CALL(endpoint, data);
   }
 }
 
