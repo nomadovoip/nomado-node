@@ -1,4 +1,4 @@
-![nomado Logo](https://my.nomado.eu/join/public/images/nomado-logo.png)
+![nomado Logo](https://my.nomado.eu/public/images/nomado-logo.png)
 # NodeJS SDK for the nomado API
 <div>
   <h3>
@@ -6,11 +6,7 @@
       Website
     </a>
     <span> | </span>
-    <a href="https://odoo.nomado.eu/page/contact-call-support-nomado">
-      Support
-    </a>
-    <span> | </span>
-    <a href="https://odoo.nomado.eu/page/website.contactus">
+    <a href="https://www.nomado.eu/help/">
       Contact
     </a>
     <span> | </span>
@@ -89,8 +85,8 @@ const nomado = new nomadoClient({USERNAME, PASSWORD});
 Now, you can start sending requests to the API.
 
 ### Responses
-Every call will return a promise that will be resolved (or rejected) with a
-`nomadoResponse` object wrapping the API response code and the data.
+Every call will return a promise that will be resolved (or rejected) with an
+object containing the API response code and the data.
 
 ````javascript
 // Result object:
@@ -243,7 +239,7 @@ You are welcome to contribute in several ways like creating new features, fixing
 
 ## Support
 We are a small team dedicated to offer you the best support because we want to satisfy you.
-For any problem or question, feel free to [contact us](https://odoo.nomado.eu/page/contact-call-support-nomado).
+For any problem or question, feel free to [contact us](https://www.nomado.eu/help/).
 
 ## Contributors
 - [Flavien Barsé](https://github.com/flavienb)

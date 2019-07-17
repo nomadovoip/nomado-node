@@ -4,7 +4,7 @@ const _ = require('lodash');
  * Default formatted response
  */
 class nomadoResponse {
-  constructor({ success, code, reason = '', data = {} }) {
+  constructor({ success, code, reason = '', ...data }) {
     this.success = success;
     this.code = code;
     this.reason = reason;

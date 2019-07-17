@@ -28,7 +28,7 @@ class InterfaceBuilder {
 
   get calls() {
     if (!this._calls) {
-      const callsAdapter = new CallsAdapter(this.httpClientBuilder.enswitch);
+      const callsAdapter = new CallsAdapter(this.httpClientBuilder.nomado);
       this._calls = new Calls(callsAdapter);
     }
 
@@ -37,7 +37,7 @@ class InterfaceBuilder {
 
   get account() {
     if (!this._account) {
-      const customersAdapter = new CustomersAdapter(this.httpClientBuilder.enswitch, this.authManager);
+      const customersAdapter = new CustomersAdapter(this.httpClientBuilder.nomado, this.authManager);
       this._account = new Account(customersAdapter);
     }
 
