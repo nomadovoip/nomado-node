@@ -4,11 +4,11 @@ const _ = require('lodash');
  * Default formatted response
  */
 class nomadoResponse {
-  constructor({ success, code, reason = '', ...data }) {
+  constructor({ success, code, message = null, reason = null}) {
     this.success = success;
     this.code = code;
-    this.reason = reason;
-    this.data = data;
+    this.reason = reason || message;
+    // this.data = data;
   }
 }
 
@@ -29,11 +29,7 @@ class HttpError {
     if (error.response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
-      formattedError = {
-        code: error.response.status,
-        reason: error.response.statusText,
-        data: error.response.data,
-      };
+      formattedError = error.response.data
     } else if (error.request) {
       // The request was made but no response was received
       // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
