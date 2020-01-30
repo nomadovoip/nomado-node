@@ -1,6 +1,6 @@
 {
   "name": "nomado",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "nomado Client SDK for making calls and sending SMS",
   "keywords": [
     "voip",
